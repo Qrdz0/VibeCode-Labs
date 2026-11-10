@@ -61,7 +61,27 @@ a { color: inherit; text-decoration: none; }
 h1 { font-size: clamp(40px, 9vw, 88px); line-height: 1.02; font-weight: 600; letter-spacing: -.035em; max-width: 13ch; }
 h1 span { color: var(--muted); }
 .lead { margin: 28px 0 40px; max-width: 34em; font-size: 18px; color: var(--text-2); }
-.hero-meta { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: 48px; }
+.hero-meta { display: flex; flex-wrap: wrap; gap: 8px 24px; }
+.hero-grid { display: grid; gap: 56px; align-items: center; }
+
+/* Contact form */
+.form { display: grid; gap: 16px; }
+.form:hover { background: var(--g1); border-color: var(--line); }
+.form-title { font-size: 22px; letter-spacing: -.02em; }
+.form label { display: grid; gap: 8px; font-size: 14px; font-weight: 500; color: var(--text-2); }
+.form input, .form select, .form textarea { width: 100%; font: 400 16px "Inter", system-ui, sans-serif; color: var(--text); background: var(--black); border: 1px solid var(--g2); border-radius: 10px; padding: 12px 14px; transition: border-color 150ms var(--ease); }
+.form textarea { resize: vertical; }
+.form select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%); background-position: calc(100% - 20px) 50%, calc(100% - 15px) 50%; background-size: 5px 5px; background-repeat: no-repeat; }
+.form ::placeholder { color: #6b6b6b; }
+.form input:focus, .form select:focus, .form textarea:focus { outline: none; border-color: var(--accent); }
+.form .btn { justify-content: center; margin-top: 8px; border: 0; cursor: pointer; }
+
+/* Work */
+.work { display: grid; gap: 16px; }
+.work a { display: grid; gap: 4px; }
+.work a:hover .arrow { transform: translate(2px, -2px); }
+.work .arrow { transition: transform 150ms var(--ease); color: var(--muted); }
+.work-top { display: flex; justify-content: space-between; align-items: baseline; }
 
 /* Sections */
 section { border-top: 1px solid var(--line); }
@@ -74,7 +94,7 @@ h3 { font-size: 19px; font-weight: 600; letter-spacing: -.01em; }
 .grid { display: grid; gap: 16px; }
 .card { background: var(--g1); border: 1px solid var(--line); border-radius: 16px; padding: 28px; transition: border-color 200ms var(--ease), background-color 200ms var(--ease); }
 .card:hover { border-color: var(--g2); background: #1e1e1e; }
-.card svg { color: var(--text-2); margin-bottom: 24px; }
+.card > svg { color: var(--text-2); margin-bottom: 24px; }
 .card p { color: var(--text-2); margin-top: 8px; font-size: 15px; }
 .tag { font-family: var(--mono); font-size: 12px; color: var(--muted); margin-left: 8px; font-weight: 400; }
 
@@ -115,6 +135,9 @@ footer { border-top: 1px solid var(--line); padding: 64px 0 40px; }
 /* Scroll fade: only hides content when JS is running */
 .js .reveal { opacity: 0; transform: translateY(12px); transition: opacity 600ms var(--ease), transform 600ms var(--ease); }
 .js .reveal.in { opacity: 1; transform: none; }
+@media (min-width: 1024px) {
+  .hero-grid { grid-template-columns: 1.3fr 1fr; gap: 80px; }
+}
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .js .reveal { opacity: 1; transform: none; transition: none; }
@@ -124,11 +147,12 @@ footer { border-top: 1px solid var(--line); padding: 64px 0 40px; }
   .wrap { padding: 0 40px; }
   .nav-links a:not(.btn) { display: inline; }
   .hero { padding: 136px 0 144px; }
-  .hero-mark { width: 520px; height: 520px; right: -40px; bottom: -80px; }
+  .hero-mark { width: 520px; height: 520px; right: auto; left: -120px; bottom: -120px; }
   .section { padding: 120px 0; }
   .head { grid-template-columns: 1fr 2fr; align-items: end; }
   .head .mono { align-self: start; padding-top: 12px; }
   .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .work { grid-template-columns: 1fr 1fr; }
   .about { grid-template-columns: 2fr 1fr; gap: 64px; }
   .steps { grid-template-columns: repeat(3, 1fr); gap: 32px; }
   .steps li { grid-template-columns: 1fr; padding-top: 24px; }
@@ -169,18 +193,32 @@ footer { border-top: 1px solid var(--line); padding: 64px 0 40px; }
 <main id="top">
   <section class="hero" style="border-top:0">
     <svg class="hero-mark" aria-hidden="true"><use href="#vl-line"/></svg>
-    <div class="wrap">
-      <p class="mono eyebrow reveal">Web design studio · Asse, Belgium</p>
-      <h1 class="reveal">Websites that load fast. <span>Design that lasts.</span></h1>
-      <p class="lead reveal">Mobile-first websites for bakeries, cafés and barbershops in Asse and the surrounding area. Built by hand in plain HTML and CSS, so your customers find you, read your menu and call you in seconds.</p>
-      <div class="reveal">
-        <a class="btn btn-primary" href="mailto:unbanqrdz@gmail.com?subject=Free%20call%20with%20VibeCode%20Labs">Book a free call
+    <div class="wrap hero-grid">
+      <div>
+        <p class="mono eyebrow reveal">Web design studio · Asse, Belgium</p>
+        <h1 class="reveal">Websites that load fast. <span>Design that lasts.</span></h1>
+        <p class="lead reveal">Mobile-first websites for bakeries, cafés and barbershops in Asse and the surrounding area. Built by hand in plain HTML and CSS, so your customers find you, read your menu and call you in seconds.</p>
+        <div class="hero-meta mono reveal">
+          <span>Pure HTML and CSS</span><span>GDPR-friendly</span><span>Dutch</span>
+        </div>
+      </div>
+      <!-- shortcut: PLACEHOLDER id, submissions fail until the real Formspree form id is set -->
+      <form class="form card reveal" id="start" action="https://formspree.io/f/PLACEHOLDER" method="POST">
+        <h2 class="form-title">Book a free call</h2>
+        <label>Name<input name="name" required autocomplete="name"></label>
+        <label>Business type
+          <select name="business_type" required>
+            <option value="" disabled selected>Choose one</option>
+            <option>Bakery</option><option>Café or restaurant</option><option>Barbershop or salon</option><option>Shop</option><option>Other</option>
+          </select>
+        </label>
+        <label>Email<input type="email" name="email" required autocomplete="email"></label>
+        <label>Message<textarea name="message" rows="4" required placeholder="What does your business need?"></textarea></label>
+        <input type="hidden" name="_subject" value="New enquiry from vibecodelabs site">
+        <button class="btn btn-primary" type="submit">Send message
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-      </div>
-      <div class="hero-meta mono reveal">
-        <span>Pure HTML and CSS</span><span>GDPR-friendly</span><span>Dutch</span>
-      </div>
+        </button>
+      </form>
     </div>
   </section>
 
@@ -207,9 +245,27 @@ footer { border-top: 1px solid var(--line); padding: 64px 0 40px; }
     </div>
   </section>
 
+  <section id="work" class="section">
+    <div class="wrap">
+      <div class="head reveal"><p class="mono">02 · Recent work</p><h2>Demo sites for local shops</h2></div>
+      <div class="work">
+        <a class="card reveal" href="demos/Asse-Kebab/" target="_blank" rel="noopener">
+          <div class="work-top"><h3>Asse Kebab</h3><span class="arrow" aria-hidden="true">↗</span></div>
+          <p>Takeaway site with a menu board, live open or closed status and WhatsApp ordering.</p>
+          <span class="tag" style="margin:16px 0 0">Demo · opens in a new tab</span>
+        </a>
+        <a class="card reveal" href="demos/Demo-Barbershop/" target="_blank" rel="noopener">
+          <div class="work-top"><h3>Atelier Noir barbershop</h3><span class="arrow" aria-hidden="true">↗</span></div>
+          <p>Fades, beard trims and hot towel shaves, with a price list and WhatsApp booking.</p>
+          <span class="tag" style="margin:16px 0 0">Demo · opens in a new tab</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <section id="about" class="section">
     <div class="wrap">
-      <div class="head reveal"><p class="mono">02 · About</p><h2>A small studio in Asse</h2></div>
+      <div class="head reveal"><p class="mono">03 · About</p><h2>A small studio in Asse</h2></div>
       <div class="about">
         <div class="reveal">
           <p>VibeCode Labs is a one-person web studio based in <strong>Asse, Belgium</strong>. I build websites for the local businesses I walk past every day, the bakery on the corner, the café on the square, the barber down the street.</p>
@@ -226,7 +282,7 @@ footer { border-top: 1px solid var(--line); padding: 64px 0 40px; }
 
   <section class="section">
     <div class="wrap">
-      <div class="head reveal"><p class="mono">03 · Process</p><h2>From first call to launch</h2></div>
+      <div class="head reveal"><p class="mono">04 · Process</p><h2>From first call to launch</h2></div>
       <ol class="steps">
         <li class="reveal"><div><h3>Discover</h3><p>A free call about your business, your customers and what the site needs to do.</p></div></li>
         <li class="reveal"><div><h3>Build</h3><p>I design and build the site, and you review it on your own phone before anything goes live.</p></div></li>
@@ -237,7 +293,7 @@ footer { border-top: 1px solid var(--line); padding: 64px 0 40px; }
 
   <section class="section">
     <div class="wrap">
-      <div class="head reveal"><p class="mono">04 · Pricing</p><h2>Clear prices, no surprises</h2></div>
+      <div class="head reveal"><p class="mono">05 · Pricing</p><h2>Clear prices, no surprises</h2></div>
       <div class="grid grid-3">
         <article class="card price reveal">
           <h3>Starter</h3>
