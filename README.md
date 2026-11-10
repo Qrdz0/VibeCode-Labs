@@ -53,7 +53,7 @@ site that loads instantly on any device.
 
 ## Contact
 
-Email: hello@vibecodelabs.be *(replace with your new professional address)*
+Email: unbanqrdz@gmail.com
 
 Location: Asse, Belgium
 
