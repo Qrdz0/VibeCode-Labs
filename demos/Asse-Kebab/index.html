@@ -1,97 +1,138 @@
 <!doctype html>
 <html lang="nl">
+<head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Asse Kebab House</title>
-<meta name="description" content="Kebab, durum en falafel van de grill, Brusselsesteenweg 123 in Asse. Bestel via WhatsApp.">
-<meta name="theme-color" content="#1c1a19">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Asse Kebab House · Laat open, van de grill</title>
+<meta name="description" content="Kebab, durum en falafel van de grill, Brusselsesteenweg 123 in Asse. Open tot middernacht in het weekend. Bestel via WhatsApp. Demo door VibeCode Labs.">
+<meta name="theme-color" content="#111111">
+<link rel="preload" href="../fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-/* warm graphite ramp, one ember accent, orange only on the price board */
-:root{--bg:#f7f4f1;--surface:#fff;--ink:#1c1a19;--ink-2:#57514d;--ink-3:#8a837e;--line:rgba(28,26,25,.08);--board:#1c1a19;--board-2:#26231f;--ember:#b3201a;--ember-ink:#9a1b16;--amber:#f08a24;--open:#3f8a4a;--wa:#1f8f4e;--ease:cubic-bezier(.2,.7,.2,1)}
-*{box-sizing:border-box}
+@font-face{font-family:"Outfit";font-weight:100 900;font-display:swap;src:url(../fonts/outfit-latin.woff2) format("woff2")}
+
+/* charcoal ramp, one burnt orange for actions and prices, flat: no shadows, no gradients */
+:root{
+ --bg:#111111;--surface:#191919;--surface-2:#222222;
+ --text:#ffffff;--text-2:#b3b3b3;--muted:#8c8c8c;
+ --line:rgba(255,255,255,.09);
+ --orange:#ff6b00;--orange-hover:#ff8126;--on-orange:#111111;
+ --open:#4caf6a;
+ --ease:cubic-bezier(.2,0,0,1);
+ --display:"Outfit",ui-sans-serif,system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth;scroll-padding-top:64px}
-body{margin:0;font:400 16px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink)}
-h1,h2,h3,p{margin:0}
-h1,h2,h3{font-weight:500;line-height:1.1}
-h2{font-size:32px;letter-spacing:-.01em;margin-bottom:24px}
-h3{font-size:18px}
-a{color:inherit}
-:focus-visible{outline:2px solid var(--amber);outline-offset:2px;border-radius:4px}
-.wrap{max-width:1120px;margin:auto;padding:0 24px}
-section{padding:80px 0}
-.muted{color:var(--ink-3)}
+body{background:var(--bg);color:var(--text);font:400 16px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--orange);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1}
+h2{font-size:clamp(36px,7vw,56px);letter-spacing:-.02em;margin-bottom:40px}
+.wrap{max-width:1120px;margin:auto;padding:0 20px}
 .num{font-variant-numeric:tabular-nums}
+section{padding:88px 0;border-top:1px solid var(--line)}
+.label{font-size:14px;color:var(--muted);margin-bottom:16px}
 svg.i{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:none}
 
-nav{position:sticky;top:0;z-index:10;background:rgba(247,244,241,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+/* Nav */
+nav{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--line)}
 nav .wrap{display:flex;align-items:center;gap:24px;height:64px}
-.logo{font-size:18px;font-weight:600;text-decoration:none}
-.logo span{color:var(--ember)}
-.status{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--ink-2)}
-.status i{width:8px;height:8px;border-radius:50%;background:var(--ink-3)}
-.status.on i{background:var(--open);box-shadow:0 0 0 3px rgba(63,138,74,.18)}
-.links{margin-left:auto;display:flex;gap:24px;font-size:15px}
-.links a{text-decoration:none;color:var(--ink-2);transition:color .15s var(--ease)}
-.links a:hover{color:var(--ink)}
+.logo{font:600 20px var(--display);letter-spacing:-.01em}
+.logo span{color:var(--orange)}
+.status{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--text-2)}
+.status i{width:8px;height:8px;border-radius:50%;background:var(--muted)}
+.status.on i{background:var(--open)}
+.links{margin-left:auto;display:flex;align-items:center;gap:24px;font-size:15px}
+.links a:not(.btn){color:var(--text-2);transition:color .15s var(--ease)}
+.links a:not(.btn):hover{color:var(--text)}
+.links .btn{display:none}
 
-.btn{display:inline-flex;align-items:center;gap:8px;height:48px;padding:0 20px;border-radius:10px;font:500 16px/1 inherit;text-decoration:none;border:0;cursor:pointer;transition:background-color .15s var(--ease),transform .1s var(--ease)}
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:52px;padding:0 24px;border-radius:8px;font:600 16px var(--display);transition:background-color .15s var(--ease),border-color .15s var(--ease),transform .1s var(--ease)}
 .btn:active{transform:scale(.98)}
-.btn-wa{background:var(--wa);color:#fff}.btn-wa:hover{background:#187a42}
-.btn-ghost{color:var(--ink);background:transparent;box-shadow:inset 0 0 0 1px rgba(28,26,25,.16)}.btn-ghost:hover{background:var(--surface)}
+.btn-orange{background:var(--orange);color:var(--on-orange)}
+.btn-orange:hover{background:var(--orange-hover)}
+.btn-line{border:1px solid rgba(255,255,255,.18)}
+.btn-line:hover{border-color:rgba(255,255,255,.4)}
+.btn-sm{height:40px;padding:0 16px;font-size:15px}
 
-.hero{padding:56px 0 80px}
-.hero .wrap{display:grid;gap:40px;align-items:center}
-.hero h1{font-size:40px;letter-spacing:-.02em;max-width:12ch}
-.hero p{margin:16px 0 32px;max-width:36ch;color:var(--ink-2);font-size:18px}
+/* Hero */
+.hero{padding:64px 0 96px;border-top:0}
+.hero .wrap{display:grid;gap:56px;align-items:center}
+.hero h1{font-size:clamp(52px,13vw,104px);letter-spacing:-.035em;line-height:.95}
+.hero h1 span{color:var(--orange)}
+.hero .lead{margin:24px 0 36px;max-width:32ch;color:var(--text-2);font-size:18px}
 .actions{display:flex;flex-wrap:wrap;gap:12px}
-.photo{border-radius:16px;background:var(--board-2) center/cover no-repeat;aspect-ratio:4/3}
-.photo.big{aspect-ratio:5/4;background-image:url(img/hero.jpg)}
+.facts{display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:40px;font-size:14px;color:var(--muted)}
+.facts b{color:var(--text);font-weight:500}
 
-.gallery{display:grid;gap:16px}
-.gallery figure{margin:0}
-.gallery figcaption{margin-top:12px;font-size:15px;color:var(--ink-2)}
-.g1{background-image:url(img/kebab.jpg)}.g2{background-image:url(img/durum.jpg)}.g3{background-image:url(img/falafel.jpg)}
+/* The moment: what ordering actually looks like */
+.chat{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;max-width:420px;width:100%;justify-self:end}
+.chat-head{display:flex;align-items:center;gap:12px;padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:20px}
+.avatar{width:36px;height:36px;border-radius:50%;background:var(--orange);color:var(--on-orange);display:grid;place-items:center;font:600 15px var(--display)}
+.chat-head b{display:block;font-weight:500;font-size:15px}
+.chat-head small{color:var(--muted);font-size:13px}
+.msg{max-width:85%;padding:12px 14px;border-radius:12px;font-size:15px;line-height:1.5;margin-bottom:8px}
+.msg.out{margin-left:auto;background:#1f2a1f;border:1px solid rgba(76,175,106,.22);border-bottom-right-radius:4px}
+.msg.in{background:var(--surface-2);border-bottom-left-radius:4px}
+.msg time{display:block;margin-top:4px;font-size:12px;color:var(--muted);text-align:right}
+.msg .ready{color:var(--orange);font-weight:500}
 
-.board{background:var(--board);color:#f3eee9;border-radius:16px;padding:32px 24px}
-.board h2{color:#fff}
-.board ul{list-style:none;padding:0;margin:0}
-.board li{display:grid;grid-template-columns:1fr auto;gap:4px 16px;padding:16px 0;border-top:1px solid rgba(255,255,255,.08)}
-.board li span{font-size:18px}
-.board li b{font-weight:500;font-size:18px;color:var(--amber);text-align:right}
-.board li small{grid-column:1/-1;color:#a69e97;font-size:15px}
+/* Menu grid: hairline borders come from the 1px gap */
+.menu{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.item{background:var(--bg);padding:28px 24px;display:grid;grid-template-columns:1fr auto;gap:8px 24px;align-content:start;transition:background-color .15s var(--ease)}
+.item:hover{background:var(--surface)}
+.item h3{font-size:24px;letter-spacing:-.01em}
+.item b{font:600 24px var(--display);color:var(--orange);text-align:right}
+.item p{grid-column:1/-1;color:var(--text-2);font-size:15px}
+.item small{grid-column:1/-1;color:var(--muted);font-size:13px;margin-top:8px}
+.menu-note{margin-top:20px;color:var(--muted);font-size:14px}
 
-.why{display:grid;gap:32px}
-.why div{display:grid;grid-template-columns:40px 1fr;gap:4px 16px}
-.why .ic{grid-row:span 2;width:40px;height:40px;border-radius:10px;background:var(--surface);box-shadow:inset 0 0 0 1px var(--line);display:grid;place-items:center;color:var(--ink-2)}
-.why p{color:var(--ink-2)}
+/* Why */
+.why{display:grid;gap:1px;background:var(--line);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.why div{background:var(--bg);padding:28px 0;display:grid;grid-template-columns:40px 1fr;gap:4px 16px}
+.why .ic{grid-row:span 2;width:40px;height:40px;border-radius:8px;border:1px solid var(--line);display:grid;place-items:center;color:var(--orange)}
+.why h3{font-size:20px;font-weight:500}
+.why p{color:var(--text-2);font-size:15px}
 
-.map{aspect-ratio:16/10;border-radius:16px;overflow:hidden;background:var(--surface);box-shadow:inset 0 0 0 1px var(--line);display:grid;place-items:center;padding:24px;text-align:center}
-.map p{color:var(--ink-2);margin-bottom:16px;max-width:36ch}
+/* Map */
+.map{aspect-ratio:16/10;border-radius:12px;overflow:hidden;background:var(--surface);border:1px solid var(--line);display:grid;place-items:center;padding:24px;text-align:center}
+.map p{color:var(--text-2);margin-bottom:20px;max-width:36ch}
 .map iframe{width:100%;height:100%;border:0}
 
-footer{background:var(--board);color:#f3eee9;padding:64px 0 120px}
-footer h2{color:#fff}
-footer dl{display:grid;grid-template-columns:96px 1fr;gap:8px 24px;margin:0 0 32px}
-footer dt{color:#a69e97}footer dd{margin:0}
-footer a{color:#f3eee9}
+/* Footer */
+footer{border-top:1px solid var(--line);padding:88px 0 128px}
+footer .wrap{display:grid;gap:48px}
+footer dl{display:grid;grid-template-columns:104px 1fr;gap:12px 24px}
+footer dt{color:var(--muted)}footer dd{margin:0}
+footer dd a{border-bottom:1px solid var(--orange)}
+.social{display:flex;gap:24px;margin-top:32px;color:var(--text-2)}
+.social a:hover{color:var(--text)}
+.credit{grid-column:1/-1;padding-top:24px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+.credit a{text-decoration:underline;text-underline-offset:3px}
 
-.float{position:fixed;left:16px;right:16px;bottom:16px;z-index:20;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.18)}
+/* Mobile order bar: flush to the bottom edge, can't be missed */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:20;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--line)}
+.bar .btn{width:100%}
 
-@media(max-width:519px){.links{gap:16px;font-size:14px}.status span{display:none}}
+@media(max-width:519px){.links a:not(.btn){display:none}.status span{font-size:13px}}
 @media(min-width:768px){
- .hero{padding:80px 0 96px}
- .hero .wrap{grid-template-columns:1fr 1fr;gap:64px}
- .hero h1{font-size:56px}
- h2{font-size:40px}
- .gallery{grid-template-columns:repeat(3,1fr)}
- .board{padding:48px}
- .why{grid-template-columns:repeat(3,1fr)}
- .float{display:none}
- footer{padding-bottom:64px}
+ .wrap{padding:0 40px}
+ .hero{padding:96px 0 128px}
+ .hero .wrap{grid-template-columns:1.25fr 1fr;gap:64px}
+ section{padding:120px 0}
+ .menu{grid-template-columns:1fr 1fr}
+ .why{grid-template-columns:repeat(3,1fr);gap:0;background:none}
+ .why div{padding:32px 32px 32px 0}
+ .why div+div{padding-left:32px;border-left:1px solid var(--line)}
+ footer .wrap{grid-template-columns:1fr 1fr}
+ footer{padding-bottom:88px}
+ .bar{display:none}
+ .links .btn{display:inline-flex}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 </style>
-
+</head>
+<body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
  <symbol id="i-msg" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
  <symbol id="i-phone" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></symbol>
@@ -103,75 +144,87 @@ footer a{color:#f3eee9}
 <nav aria-label="Hoofdmenu"><div class="wrap">
  <a class="logo" href="#top">Asse <span>Kebab</span></a>
  <div class="status" id="status"><i></i><span>Openingsuren</span></div>
- <div class="links"><a href="#menu">Menu</a><a href="#about">About</a><a href="#contact">Contact</a></div>
+ <div class="links">
+  <a href="#menu">Menu</a><a href="#over">Over ons</a><a href="#contact">Contact</a>
+  <a class="btn btn-orange btn-sm" href="https://wa.me/32470000000?text=Hallo,%20ik%20wil%20graag%20een%20bestelling%20plaatsen." target="_blank" rel="noopener">Bestel</a>
+ </div>
 </div></nav>
 
+<main>
 <header class="hero" id="top"><div class="wrap">
  <div>
-  <h1>Kebab van de grill, midden in Asse</h1>
-  <p>Gegrild vlees, krokante frietjes en huisgemaakte sauzen. Stuur je bestelling via WhatsApp en haal ze warm op.</p>
+  <p class="label">Brusselsesteenweg 123 · Asse</p>
+  <h1>Van de grill. <span>Tot middernacht.</span></h1>
+  <p class="lead">Kebab, durum en falafel met huisgemaakte sauzen. Stuur je bestelling via WhatsApp en haal ze warm op.</p>
   <div class="actions">
-   <a class="btn btn-wa" href="https://wa.me/32470000000?text=Hallo,%20ik%20wil%20graag%20een%20bestelling%20plaatsen." target="_blank" rel="noopener"><svg class="i"><use href="#i-msg"/></svg>Bestel via WhatsApp</a>
-   <a class="btn btn-ghost" href="#menu">Bekijk menu</a>
+   <a class="btn btn-orange" href="https://wa.me/32470000000?text=Hallo,%20ik%20wil%20graag%20een%20bestelling%20plaatsen." target="_blank" rel="noopener"><svg class="i"><use href="#i-msg"/></svg>Bestel via WhatsApp</a>
+   <a class="btn btn-line" href="#menu">Bekijk menu</a>
   </div>
+  <p class="facts num"><span>Kebab vanaf <b>€8,50</b></span><span>Vr–za open tot <b>00:00</b></span></p>
  </div>
- <div class="photo big" role="img" aria-label="Kebab vers van het spit"></div>
+
+ <figure class="chat num" aria-label="Voorbeeld van een bestelling via WhatsApp">
+  <div class="chat-head"><span class="avatar" aria-hidden="true">AK</span><div><b>Asse Kebab</b><small>Antwoordt meestal binnen 2 minuten</small></div></div>
+  <p class="msg out">2× Classic Kebab, 1× Kebab Box met looksaus. Ophalen om 21:40?<time>21:22</time></p>
+  <p class="msg in">Komt in orde. <span class="ready">Klaar om 21:40</span>, €27,50 betalen bij afhalen.<time>21:23</time></p>
+ </figure>
 </div></header>
 
-<section aria-labelledby="gal"><div class="wrap">
- <h2 id="gal">Food Gallery</h2>
- <div class="gallery">
-  <figure><div class="photo g1" role="img" aria-label="Classic kebab"></div><figcaption>Classic Kebab</figcaption></figure>
-  <figure><div class="photo g2" role="img" aria-label="Durum"></div><figcaption>Durum</figcaption></figure>
-  <figure><div class="photo g3" role="img" aria-label="Falafel"></div><figcaption>Falafel</figcaption></figure>
+<section id="menu" aria-labelledby="m"><div class="wrap">
+ <p class="label">Menu</p>
+ <h2 id="m">Wat er op de grill ligt</h2>
+ <div class="menu num">
+  <article class="item"><h3>Classic Kebab</h3><b>€8,50</b><p>Gegrild lamsvlees, verse salade en looksaus in een broodje.</p></article>
+  <article class="item"><h3>Durum</h3><b>€9,00</b><p>Opgerold in warm platbrood, met saus naar keuze.</p></article>
+  <article class="item"><h3>Falafel</h3><b>€7,50</b><p>Vegetarisch, met hummus en verse groenten.</p><small>Vegetarisch</small></article>
+  <article class="item"><h3>Kebab Box</h3><b>€10,50</b><p>Kebab met krokante frietjes en saus naar keuze.</p></article>
  </div>
+ <p class="menu-note">Alle sauzen huisgemaakt: look, samurai, andalouse en pikant.</p>
 </div></section>
 
-<section id="menu" aria-label="Menu"><div class="wrap"><div class="board">
- <h2>Menu</h2>
- <ul class="num">
-  <li><span>Classic Kebab</span><b>€8,50</b><small>Gegrild lamsvlees, salade, looksaus</small></li>
-  <li><span>Durum</span><b>€9,00</b><small>In warm platbrood, saus naar keuze</small></li>
-  <li><span>Falafel</span><b>€7,50</b><small>Vegetarisch, met hummus en verse groenten</small></li>
-  <li><span>Kebab Box</span><b>€10,50</b><small>Kebab met frietjes en saus</small></li>
- </ul>
-</div></div></section>
-
-<section id="about"><div class="wrap">
- <h2>Why Choose Us?</h2>
+<section id="over"><div class="wrap">
+ <p class="label">Over ons</p>
+ <h2>Snel, warm en zonder gedoe</h2>
  <div class="why">
   <div><span class="ic"><svg class="i"><use href="#i-phone"/></svg></span><h3>Bestellen zonder app</h3><p>Eén WhatsApp-bericht, geen account nodig.</p></div>
   <div><span class="ic"><svg class="i"><use href="#i-moon"/></svg></span><h3>Laat open</h3><p>Vrijdag en zaterdag tot middernacht.</p></div>
-  <div><span class="ic"><svg class="i"><use href="#i-euro"/></svg></span><h3>Prijzen vooraf</h3><p>Alles op het menu, kebab vanaf <span class="num">€8,50</span>.</p></div>
+  <div><span class="ic"><svg class="i"><use href="#i-euro"/></svg></span><h3>Prijzen vooraf</h3><p>Alles op het menu, geen verrassingen aan de toog.</p></div>
  </div>
 </div></section>
 
 <section aria-labelledby="find"><div class="wrap">
- <h2 id="find">Find Us</h2>
+ <p class="label">Locatie</p>
+ <h2 id="find">Vind ons in Asse</h2>
  <div class="map">
   <div><p>De kaart komt van Google Maps. Google ontvangt dan je IP-adres.</p>
-  <button class="btn btn-ghost" type="button" onclick="this.closest('.map').innerHTML='<iframe title=&quot;Kaart Asse centrum&quot; loading=&quot;lazy&quot; src=&quot;https://www.google.com/maps?q=Asse,+Belgium&amp;z=15&amp;output=embed&quot;></iframe>'"><svg class="i"><use href="#i-pin"/></svg>Kaart tonen</button></div>
+  <button class="btn btn-line" type="button" onclick="this.closest('.map').innerHTML='<iframe title=&quot;Kaart Asse centrum&quot; loading=&quot;lazy&quot; src=&quot;https://www.google.com/maps?q=Asse,+Belgium&amp;z=15&amp;output=embed&quot;></iframe>'"><svg class="i"><use href="#i-pin"/></svg>Kaart tonen</button></div>
  </div>
 </div></section>
+</main>
 
 <footer id="contact"><div class="wrap">
- <h2>Contact</h2>
+ <div>
+  <h2>Contact</h2>
+  <div class="social"><a href="https://facebook.com/" target="_blank" rel="noopener">Facebook</a><a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a></div>
+ </div>
  <dl class="num">
   <dt>Adres</dt><dd>Brusselsesteenweg 123<br>1730 Asse</dd>
-  <dt>WhatsApp</dt><dd><a href="https://wa.me/32470000000">+32 470 00 00 00</a></dd>
+  <dt>WhatsApp</dt><dd><a href="https://wa.me/32470000000" target="_blank" rel="noopener">+32 470 00 00 00</a></dd>
   <dt>Ma–do</dt><dd>11:00–22:00</dd>
   <dt>Vr–za</dt><dd>11:00–00:00</dd>
   <dt>Zondag</dt><dd>12:00–22:00</dd>
  </dl>
- <p><a href="https://facebook.com/" target="_blank" rel="noopener">Facebook</a> · <a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a></p>
+ <p class="credit">Demosite door <a href="../../">VibeCode Labs</a>. Adres en nummer zijn fictief.</p>
 </div></footer>
 
-<a class="btn btn-wa float" href="https://wa.me/32470000000?text=Hallo,%20ik%20wil%20graag%20een%20bestelling%20plaatsen." target="_blank" rel="noopener"><svg class="i"><use href="#i-msg"/></svg>Order on WhatsApp</a>
+<div class="bar"><a class="btn btn-orange" href="https://wa.me/32470000000?text=Hallo,%20ik%20wil%20graag%20een%20bestelling%20plaatsen." target="_blank" rel="noopener"><svg class="i"><use href="#i-msg"/></svg>Order on WhatsApp</a></div>
 
 <script>
-// open/close from the hours above; [open, close] in hours, index 0 = Sunday. shortcut: uses the visitor's clock, fine for local customers
+// open/closed from the hours above; [open, close] in hours, index 0 = Sunday
 const H=[[12,22],[11,22],[11,22],[11,22],[11,22],[11,24],[11,24]];
-const d=new Date(),h=d.getHours()+d.getMinutes()/60,[o,c]=H[d.getDay()],on=h>=o&&h<c;
+const d=new Date(),t=d.getHours()+d.getMinutes()/60,[o,c]=H[d.getDay()],on=t>=o&&t<c;
 const s=document.getElementById('status');s.classList.toggle('on',on);
-s.lastElementChild.textContent=on?'Nu open tot '+(c%24).toString().padStart(2,'0')+':00':'Gesloten';
+s.lastElementChild.textContent=on?'Nu open tot '+String(c%24).padStart(2,'0')+':00':'Gesloten';
 </script>
+</body>
+</html>

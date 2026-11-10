@@ -2,97 +2,136 @@
 <html lang="nl">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Atelier Noir · Barbershop Asse</title>
-<meta name="description" content="Fades, beard trims en hot towel shaves in Asse. Boek je afspraak via WhatsApp. Demo door VibeCode Labs.">
-<meta name="theme-color" content="#16110e">
+<meta name="description" content="Fades, beard trims en hot towel shaves in Asse. Op afspraak, boeken via WhatsApp. Demo door VibeCode Labs.">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="preload" href="../fonts/playfair-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-/* dark leather ramp, one brass accent used for prices and the booking button */
-:root{--bg:#16110e;--surface:#1f1814;--surface-2:#2a211b;--text:#f2ebe3;--text-2:#b8aca0;--muted:#8a7d71;--line:rgba(242,235,227,.08);--gold:#c9a45c;--gold-hover:#d8b674;--open:#6fa776;--ease:cubic-bezier(.2,0,0,1);--serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif}
+@font-face{font-family:"Playfair Display";font-weight:400 900;font-display:swap;src:url(../fonts/playfair-latin.woff2) format("woff2")}
+
+/* black and off-white, crimson and royal blue only on rules, icons and hovers */
+:root{
+ --bg:#0a0a0a;--surface:#131313;
+ --text:#f2efe9;--text-2:#b5b0a8;--muted:#8c8780;
+ --line:rgba(242,239,233,.12);--line-strong:rgba(242,239,233,.28);
+ --red:#dc2626;--blue:#1e3a8a;--blue-line:#2c4fae;
+ --open:#5fa36f;
+ --ease:cubic-bezier(.2,0,0,1);
+ --serif:"Playfair Display",Georgia,serif;
+}
 *{box-sizing:border-box;margin:0}
-html{scroll-behavior:smooth;scroll-padding-top:64px}
-body{font:400 16px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{background:var(--bg);color:var(--text);font:400 16px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
-:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
-.wrap{max-width:1120px;margin:auto;padding:0 20px}
-section{padding:80px 0;border-top:1px solid var(--line)}
-h1,h2{font-family:var(--serif);font-weight:400;line-height:1.05;letter-spacing:-.01em}
-h2{font-size:36px;margin-bottom:32px}
-h3{font-size:18px;font-weight:500}
-.num{font-variant-numeric:tabular-nums}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.wrap{max-width:1080px;margin:auto;padding:0 20px}
+h1,h2{font-family:var(--serif);font-weight:400;line-height:1.02;letter-spacing:-.01em}
+h2{font-size:clamp(36px,7vw,60px)}
+.num{font-variant-numeric:tabular-nums lining-nums}
+.label{font-size:14px;color:var(--muted);letter-spacing:.02em}
 svg.i{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:none}
 
-nav{position:sticky;top:0;z-index:10;background:rgba(22,17,14,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;align-items:center;gap:24px;height:64px}
-.logo{font:400 20px var(--serif);letter-spacing:.02em}
-.logo span{color:var(--gold)}
+/* Signature: a barber-pole stripe */
+.pole{height:4px;background:repeating-linear-gradient(90deg,var(--red) 0 24px,var(--text) 24px 32px,var(--blue) 32px 56px,var(--text) 56px 64px)}
+
+/* Nav */
+nav{position:sticky;top:0;z-index:10;background:var(--bg)}
+nav .wrap{display:flex;align-items:center;gap:24px;height:68px}
+.logo{font:400 22px var(--serif);letter-spacing:.01em}
 .status{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--text-2)}
-.status i{width:8px;height:8px;border-radius:50%;background:var(--muted)}
+.status i{width:7px;height:7px;border-radius:50%;background:var(--muted)}
 .status.on i{background:var(--open)}
-.links{margin-left:auto;display:flex;gap:24px;font-size:15px}
+.links{margin-left:auto;display:flex;gap:28px;font-size:15px}
 .links a{color:var(--text-2);transition:color .15s var(--ease)}
 .links a:hover{color:var(--text)}
 
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 24px;border-radius:10px;font-weight:500;font-size:16px;transition:background-color .15s var(--ease),border-color .15s var(--ease),transform .1s var(--ease)}
+/* Buttons: square-cornered, the hover is where the colour lives */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:52px;padding:0 28px;border-radius:2px;font-size:15px;font-weight:500;letter-spacing:.02em;transition:background-color .15s var(--ease),border-color .15s var(--ease),color .15s var(--ease),transform .1s var(--ease)}
 .btn:active{transform:scale(.98)}
-.btn-gold{background:var(--gold);color:#16110e}
-.btn-gold:hover{background:var(--gold-hover)}
-.btn-ghost{border:1px solid rgba(242,235,227,.16)}
-.btn-ghost:hover{border-color:rgba(242,235,227,.32)}
+.btn-main{background:var(--text);color:var(--bg)}
+.btn-main:hover{background:var(--red);color:#fff}
+.btn-line{border:1px solid var(--line-strong)}
+.btn-line:hover{border-color:var(--blue-line)}
 
-.hero{padding:72px 0 88px;border-top:0}
-.hero .wrap{display:grid;gap:48px;align-items:center}
-.eyebrow{font-size:14px;color:var(--muted);margin-bottom:20px}
-.hero h1{font-size:clamp(44px,10vw,80px);max-width:11ch}
-.hero h1 em{font-style:normal;color:var(--gold)}
-.hero p.lead{margin:24px 0 36px;max-width:34ch;color:var(--text-2);font-size:18px}
+/* Hero */
+.hero{padding:80px 0 96px}
+.hero .wrap{display:grid;gap:56px;align-items:center}
+.hero h1{font-size:clamp(52px,12vw,108px);margin:20px 0 28px}
+.hero .lead{max-width:34ch;color:var(--text-2);font-size:18px;margin-bottom:36px}
 .actions{display:flex;flex-wrap:wrap;gap:12px}
 
-/* the one rich object: a leather appointment card */
-.card{position:relative;border-radius:18px;padding:28px;background:linear-gradient(160deg,#3a2a20,#241a14);border:1px solid rgba(201,164,92,.22);box-shadow:0 24px 48px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.04)}
-.card::before{content:"";position:absolute;inset:10px;border:1px dashed rgba(201,164,92,.28);border-radius:12px;pointer-events:none}
-.card-top{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;color:var(--text-2)}
-.card-top b{font:400 22px var(--serif);color:var(--text)}
-.slots{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:8px}
-.slots li{display:flex;justify-content:space-between;padding:12px 14px;border-radius:8px;background:rgba(0,0,0,.22);font-size:15px}
-.slots li span:last-child{color:var(--text-2)}
-.slots li.taken{opacity:.45;text-decoration:line-through}
-.slots li.pick{background:rgba(201,164,92,.14);box-shadow:inset 0 0 0 1px rgba(201,164,92,.4)}
-.slots li.pick span:last-child{color:var(--gold)}
+/* The moment: a page from the appointment book, framed like print */
+.book{border:1px solid var(--line-strong);outline:1px solid var(--line);outline-offset:6px;padding:28px 24px;margin:6px}
+.book-head{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:16px;border-bottom:1px solid var(--line-strong)}
+.book-head b{font:400 26px var(--serif)}
+.book-head span{font-size:13px;color:var(--muted)}
+.slots{list-style:none;padding:0}
+.slots li{display:grid;grid-template-columns:64px 1fr auto;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);font-size:15px}
+.slots li:last-child{border-bottom:0}
+.slots time{color:var(--muted)}
+.slots .taken span{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--red)}
+.slots .free{color:var(--text)}
+.slots .free em{font-style:normal;color:var(--red);font-size:13px}
 
-.services{list-style:none;padding:0;border-top:1px solid var(--line)}
-.services li{display:grid;grid-template-columns:1fr auto;gap:4px 24px;padding:24px 0;border-bottom:1px solid var(--line)}
-.services h3{font:400 24px var(--serif)}
-.services b{font-weight:500;font-size:18px;color:var(--gold);text-align:right}
-.services p{grid-column:1/-1;color:var(--text-2);font-size:15px}
-.services small{color:var(--muted);font-size:14px;margin-left:8px}
+/* Sections with sharp rules */
+section{padding:96px 0;border-top:1px solid var(--line-strong)}
+.head{display:grid;gap:12px;margin-bottom:48px}
 
-.why{display:grid;gap:32px}
-.why div{display:grid;grid-template-columns:40px 1fr;gap:4px 16px}
-.why .ic{grid-row:span 2;width:40px;height:40px;border-radius:10px;background:var(--surface);border:1px solid var(--line);display:grid;place-items:center;color:var(--text-2)}
+/* Services & pricing with dotted leaders */
+.price-list{list-style:none;padding:0}
+.price-list li{padding:24px 0;border-bottom:1px solid var(--line)}
+.price-list li:first-child{border-top:1px solid var(--line-strong)}
+.price-list li:last-child{border-bottom-color:var(--line-strong)}
+.row{display:flex;align-items:baseline;gap:12px}
+.row h3{font:400 clamp(22px,4vw,28px)/1.2 var(--serif)}
+.row .dots{flex:1;min-width:24px;border-bottom:2px dotted var(--line-strong);transform:translateY(-6px)}
+.row b{font:400 clamp(22px,4vw,28px) var(--serif)}
+.price-list p{color:var(--text-2);font-size:15px;margin-top:6px;max-width:52ch}
+.price-list small{color:var(--muted);font-size:13px;margin-left:8px;font-family:ui-sans-serif,system-ui,sans-serif}
+.price-note{margin-top:20px;font-size:14px;color:var(--muted)}
+
+/* Why: three columns split by hairlines, no cards */
+.why{display:grid;border-top:1px solid var(--line-strong);border-bottom:1px solid var(--line-strong)}
+.why div{padding:28px 0}
+.why div+div{border-top:1px solid var(--line)}
+.why svg{color:var(--red);margin-bottom:16px}
+.why h3{font:400 22px/1.25 var(--serif);margin-bottom:8px}
 .why p{color:var(--text-2);font-size:15px}
 
-.map{aspect-ratio:16/10;border-radius:16px;overflow:hidden;background:var(--surface);border:1px solid var(--line);display:grid;place-items:center;padding:24px;text-align:center}
-.map p{color:var(--text-2);margin-bottom:16px;max-width:36ch}
+/* Map */
+.map{aspect-ratio:16/9;border:1px solid var(--line-strong);display:grid;place-items:center;padding:24px;text-align:center;background:var(--surface)}
+.map p{color:var(--text-2);margin-bottom:20px;max-width:36ch}
 .map iframe{width:100%;height:100%;border:0}
 
-footer{border-top:1px solid var(--line);padding:64px 0 120px}
-footer dl{display:grid;grid-template-columns:96px 1fr;gap:8px 24px;margin:0 0 32px}
+/* Footer */
+footer{padding:0 0 128px}
+footer .inner{display:grid;gap:40px;padding-top:88px}
+footer dl{display:grid;grid-template-columns:104px 1fr;gap:12px 24px}
 footer dt{color:var(--muted)}footer dd{margin:0}
-footer a{text-decoration:underline;text-underline-offset:3px}
-.credit{margin-top:40px;font-size:13px;color:var(--muted)}
+footer dd a{border-bottom:1px solid var(--blue-line);transition:border-color .15s var(--ease)}
+footer dd a:hover{border-color:var(--red)}
+.credit{margin-top:56px;padding-top:24px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+.credit a{text-decoration:underline;text-underline-offset:3px}
 
-.float{position:fixed;left:16px;right:16px;bottom:16px;z-index:20;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+/* Mobile booking bar */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:20;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--line-strong)}
+.bar .btn{width:100%}
 
-@media(max-width:519px){.links{display:none}}
+@media(max-width:559px){.links{display:none}}
 @media(min-width:768px){
  .wrap{padding:0 40px}
- .hero{padding:104px 0 120px}
- .hero .wrap{grid-template-columns:1.2fr 1fr;gap:72px}
- h2{font-size:48px}
+ .hero{padding:112px 0 128px}
+ .hero .wrap{grid-template-columns:1.2fr 1fr;gap:80px}
+ section{padding:128px 0}
+ .head{grid-template-columns:1fr 2fr;align-items:end}
  .why{grid-template-columns:repeat(3,1fr)}
- .float{display:none}
+ .why div{padding:32px}
+ .why div:first-child{padding-left:0}
+ .why div+div{border-top:0;border-left:1px solid var(--line)}
+ footer .inner{grid-template-columns:1fr 1fr}
  footer{padding-bottom:64px}
+ .bar{display:none}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 </style>
@@ -106,76 +145,86 @@ footer a{text-decoration:underline;text-underline-offset:3px}
  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 5-5.5 10.2-7.4 11.8a1 1 0 0 1-1.2 0C9.5 20.2 4 15 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></symbol>
 </svg>
 
-<nav aria-label="Hoofdmenu"><div class="wrap">
- <a class="logo" href="#top">Atelier <span>Noir</span></a>
- <div class="status" id="status"><i></i><span>Openingsuren</span></div>
- <div class="links"><a href="#diensten">Diensten</a><a href="#over">Over ons</a><a href="#contact">Contact</a></div>
-</div></nav>
+<nav aria-label="Hoofdmenu">
+ <div class="wrap">
+  <a class="logo" href="#top">Atelier Noir</a>
+  <div class="status" id="status"><i></i><span>Openingsuren</span></div>
+  <div class="links"><a href="#diensten">Diensten</a><a href="#over">Over ons</a><a href="#contact">Contact</a></div>
+ </div>
+ <div class="pole" aria-hidden="true"></div>
+</nav>
 
 <main>
 <header class="hero" id="top"><div class="wrap">
  <div>
-  <p class="eyebrow">Barbershop · Asse centrum</p>
-  <h1>Strak geknipt, <em>rustig</em> verzorgd</h1>
-  <p class="lead">Fades, beard trims en hot towel shaves. Boek je stoel met één WhatsApp-bericht.</p>
+  <p class="label">Barbershop · Asse centrum</p>
+  <h1>Strak geknipt, rustig verzorgd</h1>
+  <p class="lead">Fades, beard trims en hot towel shaves. Op afspraak, zonder wachtrij. Boek je stoel met één WhatsApp-bericht.</p>
   <div class="actions">
-   <a class="btn btn-gold" href="https://wa.me/32470000000?text=Hallo,%20ik%20wil%20graag%20een%20afspraak%20boeken." target="_blank" rel="noopener"><svg class="i"><use href="#i-msg"/></svg>Book Now</a>
-   <a class="btn btn-ghost" href="#diensten">Bekijk prijzen</a>
+   <a class="btn btn-main" href="https://wa.me/32470000000?text=Hallo,%20ik%20wil%20graag%20een%20afspraak%20boeken." target="_blank" rel="noopener"><svg class="i"><use href="#i-msg"/></svg>Book Now</a>
+   <a class="btn btn-line" href="#diensten">Diensten en prijzen</a>
   </div>
  </div>
- <figure class="card" aria-label="Voorbeeld van vrije tijdsloten vandaag">
-  <div class="card-top"><b>Vandaag</b><span>Stoel 1 · Youssef</span></div>
-  <ul class="slots num">
-   <li class="taken"><span>10:00</span><span>Fade</span></li>
-   <li class="taken"><span>10:45</span><span>Beard trim</span></li>
-   <li class="pick"><span>11:30</span><span>Vrij</span></li>
-   <li><span>13:00</span><span>Vrij</span></li>
-   <li><span>14:15</span><span>Vrij</span></li>
+
+ <figure class="book num" aria-label="Voorbeeld van het afsprakenboek vandaag">
+  <div class="book-head"><b>Vandaag</b><span>Stoel 1 · Youssef</span></div>
+  <ul class="slots">
+   <li class="taken"><time>10:00</time><span>Fade</span><span></span></li>
+   <li class="taken"><time>10:45</time><span>Beard trim</span><span></span></li>
+   <li class="free"><time>11:30</time><span>Vrij</span><em>Eerstvolgende</em></li>
+   <li class="free"><time>13:00</time><span>Vrij</span><span></span></li>
+   <li class="free"><time>14:15</time><span>Vrij</span><span></span></li>
   </ul>
  </figure>
 </div></header>
 
 <section id="diensten" aria-labelledby="d"><div class="wrap">
- <h2 id="d">Diensten</h2>
- <ul class="services num">
-  <li><h3>Fade<small>45 min</small></h3><b>€25</b><p>Skin, low, mid of high fade, afgewerkt met schaar en styling.</p></li>
-  <li><h3>Beard trim<small>30 min</small></h3><b>€18</b><p>Contouren met het mes, bijwerken op lengte en baardolie.</p></li>
-  <li><h3>Hot towel shave<small>40 min</small></h3><b>€30</b><p>Klassieke scheerbeurt met warme handdoeken en een open mes.</p></li>
-  <li><h3>Fade + beard<small>70 min</small></h3><b>€40</b><p>Het volledige pakket, knippen en baard in één afspraak.</p></li>
+ <div class="head"><p class="label">Diensten en prijzen</p><h2 id="d">Het menu</h2></div>
+ <ul class="price-list num">
+  <li><div class="row"><h3>Fade<small>45 min</small></h3><span class="dots" aria-hidden="true"></span><b>€25</b></div><p>Skin, low, mid of high fade, afgewerkt met schaar en styling.</p></li>
+  <li><div class="row"><h3>Beard trim<small>30 min</small></h3><span class="dots" aria-hidden="true"></span><b>€18</b></div><p>Contouren met het mes, bijwerken op lengte en baardolie.</p></li>
+  <li><div class="row"><h3>Hot towel shave<small>40 min</small></h3><span class="dots" aria-hidden="true"></span><b>€30</b></div><p>Klassieke scheerbeurt met warme handdoeken en een open mes.</p></li>
+  <li><div class="row"><h3>Fade + beard<small>70 min</small></h3><span class="dots" aria-hidden="true"></span><b>€40</b></div><p>Het volledige pakket, knippen en baard in één afspraak.</p></li>
  </ul>
+ <p class="price-note">Betalen met Bancontact of cash.</p>
 </div></section>
 
 <section id="over"><div class="wrap">
- <h2>Waarom Atelier Noir</h2>
+ <div class="head"><p class="label">Over ons</p><h2>Waarom Atelier Noir</h2></div>
  <div class="why">
-  <div><span class="ic"><svg class="i"><use href="#i-clock"/></svg></span><h3>Op afspraak, geen wachtrij</h3><p>Je stoel staat klaar op het uur dat je boekt.</p></div>
-  <div><span class="ic"><svg class="i"><use href="#i-blade"/></svg></span><h3>Open mes, warme handdoek</h3><p>Elke scheerbeurt op de klassieke manier.</p></div>
-  <div><span class="ic"><svg class="i"><use href="#i-euro"/></svg></span><h3>Vaste prijzen</h3><p>Wat op de lijst staat, betaal je. Ook met Bancontact.</p></div>
+  <div><svg class="i"><use href="#i-clock"/></svg><h3>Op afspraak, geen wachtrij</h3><p>Je stoel staat klaar op het uur dat je boekt.</p></div>
+  <div><svg class="i"><use href="#i-blade"/></svg><h3>Open mes, warme handdoek</h3><p>Elke scheerbeurt op de klassieke manier.</p></div>
+  <div><svg class="i"><use href="#i-euro"/></svg><h3>Vaste prijzen</h3><p>Wat op het menu staat, betaal je. Niets erbij.</p></div>
  </div>
 </div></section>
 
 <section aria-labelledby="find"><div class="wrap">
- <h2 id="find">Vind ons</h2>
+ <div class="head"><p class="label">Locatie</p><h2 id="find">Vind ons</h2></div>
  <div class="map">
   <div><p>De kaart komt van Google Maps. Google ontvangt dan je IP-adres.</p>
-  <button class="btn btn-ghost" type="button" onclick="this.closest('.map').innerHTML='<iframe title=&quot;Kaart Asse centrum&quot; loading=&quot;lazy&quot; src=&quot;https://www.google.com/maps?q=Asse,+Belgium&amp;z=15&amp;output=embed&quot;></iframe>'"><svg class="i"><use href="#i-pin"/></svg>Kaart tonen</button></div>
+  <button class="btn btn-line" type="button" onclick="this.closest('.map').innerHTML='<iframe title=&quot;Kaart Asse centrum&quot; loading=&quot;lazy&quot; src=&quot;https://www.google.com/maps?q=Asse,+Belgium&amp;z=15&amp;output=embed&quot;></iframe>'"><svg class="i"><use href="#i-pin"/></svg>Kaart tonen</button></div>
  </div>
 </div></section>
 </main>
 
-<footer id="contact"><div class="wrap">
- <h2>Contact</h2>
- <dl class="num">
-  <dt>Adres</dt><dd>Kalkoven 12<br>1730 Asse</dd>
-  <dt>WhatsApp</dt><dd><a href="https://wa.me/32470000000" target="_blank" rel="noopener">+32 470 00 00 00</a></dd>
-  <dt>Di–vr</dt><dd>10:00–19:00</dd>
-  <dt>Zaterdag</dt><dd>09:00–17:00</dd>
-  <dt>Zo–ma</dt><dd>Gesloten</dd>
- </dl>
- <p class="credit">Demosite door <a href="../../">VibeCode Labs</a>. Naam, adres en nummer zijn fictief.</p>
-</div></footer>
+<footer id="contact">
+ <div class="pole" aria-hidden="true"></div>
+ <div class="wrap">
+  <div class="inner">
+   <h2>Contact</h2>
+   <dl class="num">
+    <dt>Adres</dt><dd>Kalkoven 12<br>1730 Asse</dd>
+    <dt>WhatsApp</dt><dd><a href="https://wa.me/32470000000" target="_blank" rel="noopener">+32 470 00 00 00</a></dd>
+    <dt>Di–vr</dt><dd>10:00–19:00</dd>
+    <dt>Zaterdag</dt><dd>09:00–17:00</dd>
+    <dt>Zo–ma</dt><dd>Gesloten</dd>
+   </dl>
+  </div>
+  <p class="credit">Demosite door <a href="../../">VibeCode Labs</a>. Naam, adres en nummer zijn fictief.</p>
+ </div>
+</footer>
 
-<a class="btn btn-gold float" href="https://wa.me/32470000000?text=Hallo,%20ik%20wil%20graag%20een%20afspraak%20boeken." target="_blank" rel="noopener"><svg class="i"><use href="#i-msg"/></svg>Book Now</a>
+<div class="bar"><a class="btn btn-main" href="https://wa.me/32470000000?text=Hallo,%20ik%20wil%20graag%20een%20afspraak%20boeken." target="_blank" rel="noopener"><svg class="i"><use href="#i-msg"/></svg>Book Now</a></div>
 
 <script>
 // open/closed from the hours above; [open, close] in hours, index 0 = Sunday, null = closed
