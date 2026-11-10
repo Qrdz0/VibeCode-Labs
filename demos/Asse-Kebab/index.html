@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Asse Kebab House · Laat open, van de grill</title>
-<meta name="description" content="Kebab, durum en falafel van de grill, Brusselsesteenweg 123 in Asse. Open tot middernacht in het weekend. Bestel via WhatsApp. Demo door VibeCode Labs.">
+<meta name="description" content="Kebab, durum en falafel van de grill, Asse. Open tot middernacht in het weekend. Bestel via WhatsApp. Demo door VibeCode Labs.">
 <meta name="theme-color" content="#111111">
 <link rel="preload" href="../fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
@@ -21,7 +21,7 @@
  --display:"Outfit",ui-sans-serif,system-ui,sans-serif;
 }
 *{box-sizing:border-box;margin:0}
-html{scroll-behavior:smooth;scroll-padding-top:64px}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
 body{background:var(--bg);color:var(--text);font:400 16px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 :focus-visible{outline:2px solid var(--orange);outline-offset:3px;border-radius:4px}
@@ -31,7 +31,7 @@ h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1}
 svg.i{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:none}
 
 /* Nav */
-nav{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--line)}
+nav{position:sticky;top:32px;z-index:10;background:var(--bg);border-bottom:1px solid var(--line)}
 nav .wrap{display:flex;align-items:center;gap:24px;height:64px}
 .logo{font:600 20px var(--display);letter-spacing:-.01em}
 .status{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--text-2)}
@@ -65,8 +65,8 @@ nav .wrap{display:flex;align-items:center;gap:24px;height:64px}
 .chat-head b{display:block;font-weight:500;font-size:15px}
 .chat-head small{color:var(--muted);font-size:13px}
 .msg{max-width:85%;padding:12px 14px;border-radius:12px;font-size:15px;line-height:1.5;margin-bottom:8px}
-.msg.out{margin-left:auto;background:#1f2a1f;border:1px solid rgba(76,175,106,.22);border-bottom-right-radius:4px}
-.msg.in{background:var(--surface-2);border-bottom-left-radius:4px}
+.msg.out{margin-left:auto;background:var(--surface-2);border:1px solid var(--line);border-bottom-right-radius:4px}
+.msg.in{background:#2c2c2c;border-bottom-left-radius:4px}
 .msg time{display:block;margin-top:4px;font-size:12px;color:var(--muted);text-align:right}
 .msg b{font-weight:500}
 
@@ -77,17 +77,23 @@ nav .wrap{display:flex;align-items:center;gap:24px;height:64px}
 .menu-head p{color:var(--muted);font-size:14px}
 .groups{display:grid;gap:48px}
 .group h3{font-size:14px;font-weight:500;color:var(--muted);font-family:inherit;padding-bottom:12px;border-bottom:1px solid var(--line)}
-.dish{display:grid;grid-template-columns:1fr auto;gap:2px 24px;padding:18px 0;border-bottom:1px solid var(--line)}
+.dish{display:grid;grid-template-columns:1fr auto 24px;gap:2px 20px;padding:20px 12px;margin:0 -12px;border-bottom:1px solid var(--line);transition:background-color .15s var(--ease)}
+.dish:hover{background:var(--surface)}
 .dish h4{font:500 22px/1.2 var(--display)}
 .dish .price{font:500 22px/1.2 var(--display);text-align:right}
-.dish p{color:var(--text-2);font-size:15px}
-.dish a{justify-self:end;align-self:end;font-size:14px;font-weight:500;color:var(--orange);padding:4px 0;transition:color .15s var(--ease)}
-.dish a:hover{color:var(--orange-hover)}
+.dish p{grid-column:1/3;color:var(--text-2);font-size:15px}
+.dish .arrow{grid-column:3;grid-row:1/3;align-self:center;justify-self:end;color:var(--muted);transition:color .15s var(--ease),transform .15s var(--ease)}
+.dish:hover .arrow{color:var(--orange);transform:translateX(3px)}
 .sauces{display:flex;flex-wrap:wrap;gap:8px;padding-top:16px}
 .sauces li{list-style:none;padding:6px 12px;border:1px solid var(--line);border-radius:6px;font-size:15px;color:var(--text-2)}
 .sauces{padding-left:0}
 .group h3:not(:first-child){margin-top:32px}
 footer dd .route{margin:0}
+
+/* Demo banner */
+body{padding-top:32px}
+.demo{position:fixed;top:0;left:0;right:0;z-index:30;height:32px;display:flex;align-items:center;justify-content:center;white-space:nowrap;background:#ffffff;color:#111111;font-size:13px;font-weight:500}
+.demo a{text-decoration:underline;text-underline-offset:3px}
 
 /* Footer */
 footer{border-top:1px solid var(--line);padding:88px 0 128px}
@@ -112,7 +118,6 @@ footer dt{color:var(--muted)}footer dd{margin:0}
  .hero{padding:96px 0 120px}
  .hero .wrap{grid-template-columns:1.25fr 1fr;gap:64px}
  #menu{padding:120px 0}
- .groups{grid-template-columns:1fr 1fr;gap:48px 64px}
  footer .wrap{grid-template-columns:1fr 1fr}
  footer{padding-bottom:88px}
  .bar{display:none}
@@ -121,12 +126,12 @@ footer dt{color:var(--muted)}footer dd{margin:0}
 </style>
 </head>
 <body>
+<p class="demo">Demo site by&nbsp;<a href="../../">VibeCode Labs</a></p>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
  <symbol id="i-msg" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
  <symbol id="i-phone" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></symbol>
  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
  <symbol id="i-euro" viewBox="0 0 24 24"><path d="M4 10h12M4 14h9M19 6a7.7 7.7 0 0 0-5.2-2A7.9 7.9 0 0 0 6 12c0 4.4 3.5 8 7.8 8 2 0 3.8-.8 5.2-2"/></symbol>
- <symbol id="i-route" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
 </svg>
 
 <nav aria-label="Hoofdmenu"><div class="wrap">
@@ -138,7 +143,7 @@ footer dt{color:var(--muted)}footer dd{margin:0}
 <main>
 <header class="hero" id="top"><div class="wrap">
  <div>
-  <p class="place">Brusselsesteenweg 123 · Asse</p>
+  <p class="place">Afhalen in Asse</p>
   <h1>Van de grill. <span>Tot middernacht.</span></h1>
   <p class="lead">Kebab, durum en falafel met huisgemaakte sauzen. Stuur je bestelling via WhatsApp en haal ze warm op.</p>
   <a class="btn btn-orange" id="hero-order" href="https://wa.me/32470000000?text=Hallo,%20ik%20wil%20graag%20bestellen%20om%20af%20te%20halen." target="_blank" rel="noopener"><svg class="i"><use href="#i-msg"/></svg>Bestel via WhatsApp</a>
@@ -157,17 +162,17 @@ footer dt{color:var(--muted)}footer dd{margin:0}
 </div></header>
 
 <section id="menu" aria-labelledby="m"><div class="wrap">
- <div class="menu-head"><h2 id="m">Menu</h2><p>Tik op Bestel en je bericht staat al klaar</p></div>
+ <div class="menu-head"><h2 id="m">Menu</h2><p>Tik op een gerecht en je bericht staat al klaar</p></div>
  <div class="groups num">
   <div class="group">
    <h3>Broodjes en wraps</h3>
-   <article class="dish"><h4>Classic Kebab</h4><span class="price">€8,50</span><p>Gegrild lamsvlees, verse salade en looksaus</p><a href="https://wa.me/32470000000?text=Hallo,%20ik%20wil%20graag%201%C3%97%20Classic%20Kebab%20bestellen." target="_blank" rel="noopener">Bestel</a></article>
-   <article class="dish"><h4>Durum</h4><span class="price">€9,00</span><p>Opgerold in warm platbrood, saus naar keuze</p><a href="https://wa.me/32470000000?text=Hallo,%20ik%20wil%20graag%201%C3%97%20Durum%20bestellen." target="_blank" rel="noopener">Bestel</a></article>
-   <article class="dish"><h4>Falafel</h4><span class="price">€7,50</span><p>Vegetarisch, met hummus en verse groenten</p><a href="https://wa.me/32470000000?text=Hallo,%20ik%20wil%20graag%201%C3%97%20Falafel%20bestellen." target="_blank" rel="noopener">Bestel</a></article>
+   <a class="dish" href="https://wa.me/32470000000?text=Hallo,%20ik%20wil%20graag%201%C3%97%20Classic%20Kebab%20bestellen." target="_blank" rel="noopener"><h4>Classic Kebab</h4><span class="price">€8,50</span><p>Gegrild lamsvlees, verse salade en looksaus</p><span class="arrow" aria-hidden="true">→</span></a>
+   <a class="dish" href="https://wa.me/32470000000?text=Hallo,%20ik%20wil%20graag%201%C3%97%20Durum%20bestellen." target="_blank" rel="noopener"><h4>Durum</h4><span class="price">€9,00</span><p>Opgerold in warm platbrood, saus naar keuze</p><span class="arrow" aria-hidden="true">→</span></a>
+   <a class="dish" href="https://wa.me/32470000000?text=Hallo,%20ik%20wil%20graag%201%C3%97%20Falafel%20bestellen." target="_blank" rel="noopener"><h4>Falafel</h4><span class="price">€7,50</span><p>Vegetarisch, met hummus en verse groenten</p><span class="arrow" aria-hidden="true">→</span></a>
   </div>
   <div class="group">
    <h3>Boxen</h3>
-   <article class="dish"><h4>Kebab Box</h4><span class="price">€10,50</span><p>Kebab met krokante frietjes en saus naar keuze</p><a href="https://wa.me/32470000000?text=Hallo,%20ik%20wil%20graag%201%C3%97%20Kebab%20Box%20bestellen." target="_blank" rel="noopener">Bestel</a></article>
+   <a class="dish" href="https://wa.me/32470000000?text=Hallo,%20ik%20wil%20graag%201%C3%97%20Kebab%20Box%20bestellen." target="_blank" rel="noopener"><h4>Kebab Box</h4><span class="price">€10,50</span><p>Kebab met krokante frietjes en saus naar keuze</p><span class="arrow" aria-hidden="true">→</span></a>
    <h3>Huisgemaakte sauzen</h3>
    <ul class="sauces"><li>Look</li><li>Samurai</li><li>Andalouse</li><li>Pikant</li></ul>
   </div>
@@ -178,8 +183,7 @@ footer dt{color:var(--muted)}footer dd{margin:0}
 <footer id="contact"><div class="wrap">
  <div>
   <h2>Afhalen in Asse</h2>
-  <address>Brusselsesteenweg 123<br>1730 Asse</address>
-  <a class="route" href="https://www.google.com/maps/search/?api=1&amp;query=Brusselsesteenweg+123+1730+Asse" target="_blank" rel="noopener">Route plannen<svg class="i"><use href="#i-route"/></svg></a>
+  <address>Asse</address>
  </div>
  <dl class="num">
   <dt>WhatsApp</dt><dd><a class="route" href="https://wa.me/32470000000" target="_blank" rel="noopener">+32 470 00 00 00</a></dd>
@@ -187,7 +191,7 @@ footer dt{color:var(--muted)}footer dd{margin:0}
   <dt>Vr–za</dt><dd>11:00–00:00</dd>
   <dt>Zondag</dt><dd>12:00–22:00</dd>
  </dl>
- <p class="credit">Demosite door <a href="../../">VibeCode Labs</a>. Adres, nummer en bestelling zijn fictief.</p>
+ <p class="credit">Demosite door <a href="../../">VibeCode Labs</a>. Nummer en bestelling zijn fictief.</p>
 </div></footer>
 
 <div class="bar" id="bar"><a class="btn btn-orange" href="https://wa.me/32470000000?text=Hallo,%20ik%20wil%20graag%20bestellen%20om%20af%20te%20halen." target="_blank" rel="noopener"><svg class="i"><use href="#i-msg"/></svg>Bestel via WhatsApp</a></div>

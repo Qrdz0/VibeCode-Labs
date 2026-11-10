@@ -15,13 +15,13 @@
  --bg:#0a0a0a;--surface:#131313;
  --text:#f2efe9;--text-2:#b5b0a8;--muted:#8c8780;
  --line:rgba(242,239,233,.12);--line-strong:rgba(242,239,233,.28);
- --red:#dc2626;--blue:#1e3a8a;
+ --red:#dc2626;--blue:#1e3a8a;--ink:#15213f;
  --open:#5fa36f;
  --ease:cubic-bezier(.2,0,0,1);
  --serif:"Playfair Display",Georgia,serif;
 }
 *{box-sizing:border-box;margin:0}
-html{scroll-behavior:smooth;scroll-padding-top:72px}
+html{scroll-behavior:smooth;scroll-padding-top:104px}
 body{background:var(--bg);color:var(--text);font:400 16px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 :focus-visible{outline:2px solid var(--red);outline-offset:3px}
@@ -36,7 +36,7 @@ svg.i{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.5;stro
 .pole{height:6px;background:repeating-linear-gradient(-45deg,var(--red) 0 8px,var(--text) 8px 12px,var(--blue) 12px 20px,var(--text) 20px 24px)}
 
 /* Nav */
-nav{position:sticky;top:0;z-index:10;background:var(--bg)}
+nav{position:sticky;top:32px;z-index:10;background:var(--bg)}
 nav .wrap{display:flex;align-items:center;gap:24px;height:68px}
 .logo{font:400 22px var(--serif);letter-spacing:.01em}
 .status{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--text-2)}
@@ -94,7 +94,8 @@ section{padding:96px 0;border-top:1px solid var(--line-strong)}
 .price-note{margin-top:20px;font-size:14px;color:var(--muted)}
 
 /* Booking band: the one blue surface */
-.band{background:var(--blue);border-top:0;color:#fff}
+.band{background:var(--ink);border-top:0;color:#fff}
+.band :focus-visible{outline-color:#f8fafc}
 .band .wrap{display:grid;gap:48px}
 .band h2{margin-bottom:20px}
 .band p{color:rgba(255,255,255,.78);max-width:36ch;margin-bottom:32px}
@@ -103,6 +104,18 @@ section{padding:96px 0;border-top:1px solid var(--line-strong)}
 .hours dt,.hours dd{padding:14px 0;border-bottom:1px solid rgba(255,255,255,.16);margin:0}
 .hours dd{text-align:right}
 .hours .closed{color:rgba(255,255,255,.6)}
+
+/* Photo grids: grey slots until the owner's photos arrive */
+.photos{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.photo{aspect-ratio:4/5;background:var(--surface);border:1px solid var(--line);display:grid;place-items:center;font-size:13px;color:var(--muted)}
+.barbers .photo{aspect-ratio:3/4}
+.sub{font:400 28px/1.2 var(--serif);margin:0 0 24px}
+.sub+.photos+.sub{margin-top:64px}
+
+/* Demo banner */
+body{padding-top:32px}
+.demo{position:fixed;top:0;left:0;right:0;z-index:30;height:32px;display:flex;align-items:center;justify-content:center;white-space:nowrap;background:#f2efe9;color:#0a0a0a;font-size:13px;font-weight:500}
+.demo a{text-decoration:underline;text-underline-offset:3px}
 
 /* Footer */
 footer{padding:88px 0 128px;border-top:1px solid var(--line-strong)}
@@ -120,6 +133,7 @@ footer dt{color:var(--muted)}footer dd{margin:0}
 
 @media(max-width:559px){.links{display:none}}
 @media(min-width:768px){
+ .photos{grid-template-columns:repeat(3,1fr);gap:16px}
  .wrap{padding:0 40px}
  .hero{padding:112px 0 128px}
  .hero .wrap{grid-template-columns:1.2fr 1fr;gap:80px}
@@ -134,9 +148,9 @@ footer dt{color:var(--muted)}footer dd{margin:0}
 </style>
 </head>
 <body>
+<p class="demo">Demo site by&nbsp;<a href="../../">VibeCode Labs</a></p>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
  <symbol id="i-msg" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
- <symbol id="i-route" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
 </svg>
 
 <nav aria-label="Hoofdmenu">
@@ -151,12 +165,12 @@ footer dt{color:var(--muted)}footer dd{margin:0}
 <main>
 <header class="hero" id="top"><div class="wrap">
  <div>
-  <p class="label">Barbershop · Kalkoven 12, Asse</p>
+  <p class="label">Barbershop · Asse centrum</p>
   <h1>Fades en scheerbeurten met het open mes</h1>
   <p class="lead">Elke scheerbeurt met warme handdoeken en een open mes, elke fade met de schaar afgewerkt. Op afspraak, zonder wachtrij.</p>
   <div class="actions">
    <a class="btn btn-main" id="hero-book" href="https://wa.me/32470000000?text=Hallo,%20ik%20wil%20graag%20een%20afspraak%20boeken.%0ADienst:%20%0ADag%20en%20uur:%20" target="_blank" rel="noopener"><svg class="i"><use href="#i-msg"/></svg>Boek je afspraak</a>
-   <a class="textlink" href="#contact">Kalkoven 12, Asse</a>
+   <a class="textlink" href="#werk">Bekijk ons werk</a>
   </div>
  </div>
 
@@ -183,6 +197,14 @@ footer dt{color:var(--muted)}footer dd{margin:0}
  <p class="price-note">Betalen met Bancontact of cash.</p>
 </div></section>
 
+<section id="werk" aria-labelledby="w"><div class="wrap">
+ <div class="head"><p class="label">Het atelier</p><h2 id="w">Ons werk</h2></div>
+ <h3 class="sub">De barbers</h3>
+ <div class="photos barbers"><div class="photo">Photo coming soon</div><div class="photo">Photo coming soon</div><div class="photo">Photo coming soon</div></div>
+ <h3 class="sub">Recent werk</h3>
+ <div class="photos"><div class="photo">Photo coming soon</div><div class="photo">Photo coming soon</div><div class="photo">Photo coming soon</div><div class="photo">Photo coming soon</div><div class="photo">Photo coming soon</div><div class="photo">Photo coming soon</div></div>
+</div></section>
+
 <section class="band" id="boeken" aria-labelledby="b"><div class="wrap">
  <div>
   <p class="label">Op afspraak</p>
@@ -201,14 +223,13 @@ footer dt{color:var(--muted)}footer dd{margin:0}
 <footer id="contact"><div class="wrap">
  <div>
   <p class="label">Adres</p>
-  <address>Kalkoven 12<br>1730 Asse</address>
-  <a class="textlink" href="https://www.google.com/maps/search/?api=1&amp;query=Kalkoven+12+1730+Asse" target="_blank" rel="noopener">Route plannen<svg class="i"><use href="#i-route"/></svg></a>
+  <address>Asse centrum</address>
  </div>
  <dl class="num">
   <dt>WhatsApp</dt><dd><a class="textlink" href="https://wa.me/32470000000" target="_blank" rel="noopener">+32 470 00 00 00</a></dd>
   <dt>Betalen</dt><dd>Bancontact of cash</dd>
  </dl>
- <p class="credit">Demosite door <a href="../../">VibeCode Labs</a>. Naam, adres, nummer en agenda zijn fictief.</p>
+ <p class="credit">Demosite door <a href="../../">VibeCode Labs</a>. Naam, nummer en agenda zijn fictief.</p>
 </div></footer>
 
 <div class="bar" id="bar"><a class="btn btn-main" href="https://wa.me/32470000000?text=Hallo,%20ik%20wil%20graag%20een%20afspraak%20boeken.%0ADienst:%20%0ADag%20en%20uur:%20" target="_blank" rel="noopener"><svg class="i"><use href="#i-msg"/></svg>Boek je afspraak</a></div>

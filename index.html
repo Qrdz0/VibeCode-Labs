@@ -54,19 +54,26 @@ a { color: inherit; text-decoration: none; }
 .btn-ghost:hover { border-color: #444; }
 
 /* Hero */
-.hero { position: relative; overflow: hidden; padding: 96px 0 104px; }
-.hero-mark { position: absolute; right: -60px; bottom: -40px; width: 340px; height: 340px; opacity: .5; pointer-events: none; }
-.hero .wrap { position: relative; }
+.hero { padding: 96px 0 104px; }
 .eyebrow { margin-bottom: 24px; }
-h1 { font-size: clamp(40px, 7vw, 80px); line-height: 1.02; font-weight: 500; letter-spacing: -.035em; max-width: 14ch; }
+h1 { font-size: clamp(40px, 7vw, 80px); line-height: 1.02; font-weight: 500; letter-spacing: -.035em; max-width: 17ch; }
 h1 span { color: var(--muted); }
 .lead { margin: 28px 0 40px; max-width: 34em; font-size: 18px; color: var(--text-2); }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px; margin-bottom: 48px; }
+.link { color: var(--text-2); border-bottom: 1px solid var(--g2); padding-bottom: 2px; transition: color 150ms var(--ease), border-color 150ms var(--ease); }
+.link:hover { color: var(--text); border-color: var(--text-2); }
 .hero-meta { display: flex; flex-wrap: wrap; gap: 8px 24px; }
-.hero-grid { display: grid; gap: 56px; align-items: center; }
 
-/* Contact form */
+/* Contact */
+.contact { display: grid; gap: 48px; align-items: start; }
+.contact .lead { margin: 20px 0 24px; }
 .form { display: grid; gap: 16px; }
-.form-title { font-size: 22px; letter-spacing: -.02em; }
+.form-note { font-size: 13px; color: var(--muted); }
+.form-note a { color: var(--text-2); text-decoration: underline; text-underline-offset: 3px; }
+.form-error { font-size: 14px; color: #f08a80; }
+.form-error a { text-decoration: underline; text-underline-offset: 3px; }
+.sent { font-size: 18px; font-weight: 500; color: #6fcf8a; }
+.sent + p { margin-top: 8px; }
 .form label { display: grid; gap: 8px; font-size: 14px; font-weight: 500; color: var(--text-2); }
 .form input, .form select, .form textarea { width: 100%; font: 400 16px "Inter", system-ui, sans-serif; color: var(--text); background: var(--black); border: 1px solid var(--g2); border-radius: 10px; padding: 12px 14px; transition: border-color 150ms var(--ease); }
 .form textarea { resize: vertical; }
@@ -137,9 +144,6 @@ footer { border-top: 1px solid var(--line); padding: 64px 0 40px; }
 /* Scroll fade: only hides content when JS is running */
 .js .reveal { opacity: 0; transform: translateY(12px); transition: opacity 600ms var(--ease), transform 600ms var(--ease); }
 .js .reveal.in { opacity: 1; transform: none; }
-@media (min-width: 1024px) {
-  .hero-grid { grid-template-columns: 1.3fr 1fr; gap: 80px; }
-}
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .js .reveal { opacity: 1; transform: none; transition: none; }
@@ -149,7 +153,6 @@ footer { border-top: 1px solid var(--line); padding: 64px 0 40px; }
   .wrap { padding: 0 40px; }
   .nav-links a:not(.btn) { display: inline; }
   .hero { padding: 136px 0 144px; }
-  .hero-mark { width: 520px; height: 520px; right: auto; left: -120px; bottom: -120px; }
   .section { padding: 120px 0; }
   .head { grid-template-columns: 1fr 2fr; align-items: end; }
   .head .mono { align-self: start; padding-top: 12px; }
@@ -159,6 +162,7 @@ footer { border-top: 1px solid var(--line); padding: 64px 0 40px; }
   .steps { grid-template-columns: repeat(3, 1fr); gap: 32px; }
   .steps li { grid-template-columns: 1fr; padding-top: 24px; }
   .foot { grid-template-columns: 2fr 1fr 1fr; }
+  .contact { grid-template-columns: 1fr 1fr; gap: 80px; }
 }
 </style>
 <script>document.documentElement.classList.add('js');</script>
@@ -171,10 +175,6 @@ footer { border-top: 1px solid var(--line); padding: 64px 0 40px; }
     <path d="M10 12 20 36 30 12" fill="none" stroke="#8a8a8a" stroke-width="4" stroke-linejoin="miter"/>
     <path d="M22 12V36H38" fill="none" stroke="#f5f5f5" stroke-width="4" stroke-linejoin="miter"/>
   </symbol>
-  <symbol id="vl-line" viewBox="0 0 48 48">
-    <path d="M10 12 20 36 30 12" fill="none" stroke="#2a2a2a" stroke-width="1.2"/>
-    <path d="M22 12V36H38" fill="none" stroke="#3a3a3a" stroke-width="1.2"/>
-  </symbol>
 </svg>
 
 <header class="nav">
@@ -186,7 +186,7 @@ footer { border-top: 1px solid var(--line); padding: 64px 0 40px; }
     <nav class="nav-links" aria-label="Main">
       <a href="#services">Services</a>
       <a href="#about">About</a>
-      <a href="#contact">Contact</a>
+      <a href="#start">Contact</a>
       <a class="btn btn-ghost" href="#start">Get in touch</a>
     </nav>
   </div>
@@ -194,39 +194,25 @@ footer { border-top: 1px solid var(--line); padding: 64px 0 40px; }
 
 <main id="top">
   <section class="hero">
-    <svg class="hero-mark" aria-hidden="true"><use href="#vl-line"/></svg>
-    <div class="wrap hero-grid">
-      <div>
-        <p class="mono eyebrow reveal">Web design studio · Asse, Belgium</p>
-        <h1 class="reveal">Websites that load fast. <span>Design that lasts.</span></h1>
-        <p class="lead reveal">Mobile-first websites for bakeries, cafés and barbershops in Asse and the surrounding area. Built by hand in plain HTML and CSS, so your customers find you, read your menu and call you in seconds.</p>
-        <div class="hero-meta mono reveal">
-          <span>Pure HTML and CSS</span><span>GDPR-friendly</span><span>Dutch</span>
-        </div>
-      </div>
-      <!-- shortcut: PLACEHOLDER id, submissions fail until the real Formspree form id is set -->
-      <form class="form card reveal" id="start" action="https://formspree.io/f/PLACEHOLDER" method="POST">
-        <h2 class="form-title">Book a free call</h2>
-        <label>Name<input name="name" required autocomplete="name"></label>
-        <label>Business type
-          <select name="business_type" required>
-            <option value="" disabled selected>Choose one</option>
-            <option>Bakery</option><option>Café or restaurant</option><option>Barbershop or salon</option><option>Shop</option><option>Other</option>
-          </select>
-        </label>
-        <label>Email<input type="email" name="email" required autocomplete="email"></label>
-        <label>Message<textarea name="message" rows="4" required placeholder="What does your business need?"></textarea></label>
-        <input type="hidden" name="_subject" value="New enquiry from vibecodelabs site">
-        <button class="btn btn-primary" type="submit">Send message
+    <div class="wrap">
+      <p class="mono eyebrow reveal">Web design studio · Asse, Belgium</p>
+      <h1 class="reveal">Your shop's website, built in Asse. <span>Live in two weeks.</span></h1>
+      <p class="lead reveal">Mobile-first websites for bakeries, cafés and barbershops in Asse and the surrounding area. I build them by hand in plain HTML and CSS, so they load fast on any phone.</p>
+      <div class="actions reveal">
+        <a class="btn btn-primary" href="#start">Book a free call
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </button>
-      </form>
+        </a>
+        <a class="link" href="#work">View demos</a>
+      </div>
+      <div class="hero-meta mono reveal">
+        <span>Pure HTML and CSS</span><span>GDPR-friendly</span><span>Dutch</span>
+      </div>
     </div>
   </section>
 
   <section id="services" class="section">
     <div class="wrap">
-      <div class="head reveal"><p class="mono">01 · Services</p><h2>What we build for your business</h2></div>
+      <div class="head reveal"><p class="mono">Services</p><h2>What I build for your business</h2></div>
       <div class="grid grid-3">
         <article class="card reveal">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 14l-2 2 2 2M16 14l2 2-2 2"/></svg>
@@ -249,7 +235,7 @@ footer { border-top: 1px solid var(--line); padding: 64px 0 40px; }
 
   <section id="work" class="section">
     <div class="wrap">
-      <div class="head reveal"><p class="mono">02 · Recent work</p><h2>Demo sites for local shops</h2></div>
+      <div class="head reveal"><p class="mono">Recent work</p><h2>Demo sites for local shops</h2></div>
       <div class="work">
         <a class="card reveal" href="demos/Asse-Kebab/" target="_blank" rel="noopener">
           <div class="work-top"><h3>Asse Kebab</h3><span class="arrow" aria-hidden="true">↗</span></div>
@@ -267,7 +253,7 @@ footer { border-top: 1px solid var(--line); padding: 64px 0 40px; }
 
   <section id="about" class="section">
     <div class="wrap">
-      <div class="head reveal"><p class="mono">03 · About</p><h2>A small studio in Asse</h2></div>
+      <div class="head reveal"><p class="mono">About</p><h2>A small studio in Asse</h2></div>
       <div class="about">
         <div class="reveal">
           <p>VibeCode Labs is a one-person web studio based in <strong>Asse, Belgium</strong>. I build websites for the local businesses I walk past every day, the bakery on the corner, the café on the square, the barber down the street.</p>
@@ -284,7 +270,7 @@ footer { border-top: 1px solid var(--line); padding: 64px 0 40px; }
 
   <section class="section">
     <div class="wrap">
-      <div class="head reveal"><p class="mono">04 · Process</p><h2>From first call to launch</h2></div>
+      <div class="head reveal"><p class="mono">Process</p><h2>From first call to launch</h2></div>
       <ol class="steps">
         <li class="reveal"><div><h3>Discover</h3><p>A free call about your business, your customers and what the site needs to do.</p></div></li>
         <li class="reveal"><div><h3>Build</h3><p>I design and build the site, and you review it on your own phone before anything goes live.</p></div></li>
@@ -295,29 +281,59 @@ footer { border-top: 1px solid var(--line); padding: 64px 0 40px; }
 
   <section class="section">
     <div class="wrap">
-      <div class="head reveal"><p class="mono">05 · Pricing</p><h2>Clear prices, no surprises</h2></div>
+      <div class="head reveal"><p class="mono">Pricing</p><h2>Clear prices, no surprises</h2></div>
       <div class="grid grid-3">
         <article class="card price reveal">
           <h3>Starter</h3>
           <p class="amount">€150</p>
           <p>A one-page site for a shop that needs to be found.</p>
           <ul><li>One-page website</li><li>Mobile-first design</li><li>Contact and opening hours</li></ul>
-          <a class="btn btn-plain" href="#contact">Choose Starter</a>
+          <a class="btn btn-plain" href="#start">Choose Starter</a>
         </article>
         <article class="card price featured reveal">
           <div class="price-top"><h3>Pro</h3><span class="badge">Most popular</span></div>
           <p class="amount">€300</p>
           <p>A full site with room for your menu, services and story.</p>
           <ul><li>Up to five pages</li><li>Privacy policy and cookie setup</li><li>Google listing basics</li></ul>
-          <a class="btn btn-primary" href="#contact">Choose Pro</a>
+          <a class="btn btn-primary" href="#start">Choose Pro</a>
         </article>
         <article class="card price reveal">
           <h3>Audit</h3>
           <p class="amount">€20<small> one-time</small></p>
           <p>A quick check of your current site for privacy and speed issues.</p>
           <ul><li>Privacy and cookie review</li><li>Speed and mobile check</li><li>Written report with fixes</li></ul>
-          <a class="btn btn-plain" href="#contact">Book Audit</a>
+          <a class="btn btn-plain" href="#start">Book Audit</a>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="start" class="section">
+    <div class="wrap contact">
+      <div class="reveal">
+        <p class="mono">Contact</p>
+        <h2>Book a free call</h2>
+        <p class="lead">Tell me about your shop and what you need. I'll get back to you within 24 hours to set up a short call.</p>
+        <p class="form-note">Prefer email? <a href="mailto:unbanqrdz@gmail.com">unbanqrdz@gmail.com</a></p>
+      </div>
+      <div class="card reveal" id="form-box" aria-live="polite">
+        <form class="form" id="contact-form" action="https://formspree.io/f/xvkapzny" method="POST">
+          <label>Name<input name="name" required autocomplete="name"></label>
+          <label>Business type
+            <select name="business_type" required>
+              <option value="" disabled selected>Choose one</option>
+              <option>Bakery</option><option>Café or restaurant</option><option>Barbershop or salon</option><option>Shop</option><option>Other</option>
+            </select>
+          </label>
+          <label>Email<input type="email" name="email" required autocomplete="email"></label>
+          <label>Message<textarea name="message" rows="4" required placeholder="What does your business need?"></textarea></label>
+          <input type="hidden" name="_subject" value="New enquiry from the VibeCode Labs site">
+          <p class="form-error" id="form-error" hidden></p>
+          <button class="btn btn-primary" type="submit">Send message
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+          <p class="form-note">By submitting, you agree to the <a href="terms.html">Privacy Policy</a>.</p>
+        </form>
       </div>
     </div>
   </section>
@@ -353,6 +369,22 @@ const io = new IntersectionObserver(es => es.forEach(e => {
   if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
 }), { rootMargin: '0px 0px -8% 0px' });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// Send via fetch so the visitor stays on the page; without JS the form still posts to Formspree normally
+const form = document.getElementById('contact-form'), err = document.getElementById('form-error');
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  const btn = form.querySelector('button');
+  btn.disabled = true; err.hidden = true;
+  try {
+    const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+    if (!res.ok) throw new Error();
+    document.getElementById('form-box').innerHTML = '<p class="sent">Message sent successfully</p><p class="form-note">Thanks. I\'ll get back to you within 24 hours.</p>';
+  } catch {
+    err.innerHTML = 'Sending failed. Please try again or email <a href="mailto:unbanqrdz@gmail.com">unbanqrdz@gmail.com</a>.';
+    err.hidden = false; btn.disabled = false;
+  }
+});
 </script>
 </body>
 </html>
