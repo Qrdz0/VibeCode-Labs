@@ -4,18 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Atelier Noir · Barbershop Asse</title>
-<meta name="description" content="Fades, beard trims en hot towel shaves in Asse. Op afspraak, boeken via WhatsApp. Demo door VibeCode Labs.">
+<meta name="description" content="Fades, beard trims en hot towel shaves met het open mes in Asse. Op afspraak, boeken via WhatsApp. Demo door VibeCode Labs.">
 <meta name="theme-color" content="#0a0a0a">
 <link rel="preload" href="../fonts/playfair-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 @font-face{font-family:"Playfair Display";font-weight:400 900;font-display:swap;src:url(../fonts/playfair-latin.woff2) format("woff2")}
 
-/* black and off-white, crimson and royal blue only on rules, icons and hovers */
+/* black and off-white; royal blue owns one surface (the booking band), crimson marks what's next */
 :root{
  --bg:#0a0a0a;--surface:#131313;
  --text:#f2efe9;--text-2:#b5b0a8;--muted:#8c8780;
  --line:rgba(242,239,233,.12);--line-strong:rgba(242,239,233,.28);
- --red:#dc2626;--blue:#1e3a8a;--blue-line:#2c4fae;
+ --red:#dc2626;--blue:#1e3a8a;
  --open:#5fa36f;
  --ease:cubic-bezier(.2,0,0,1);
  --serif:"Playfair Display",Georgia,serif;
@@ -32,8 +32,8 @@ h2{font-size:clamp(36px,7vw,60px)}
 .label{font-size:14px;color:var(--muted);letter-spacing:.02em}
 svg.i{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:none}
 
-/* Signature: a barber-pole stripe */
-.pole{height:4px;background:repeating-linear-gradient(90deg,var(--red) 0 24px,var(--text) 24px 32px,var(--blue) 32px 56px,var(--text) 56px 64px)}
+/* Signature: one barber pole, under the nav */
+.pole{height:6px;background:repeating-linear-gradient(-45deg,var(--red) 0 8px,var(--text) 8px 12px,var(--blue) 12px 20px,var(--text) 20px 24px)}
 
 /* Nav */
 nav{position:sticky;top:0;z-index:10;background:var(--bg)}
@@ -46,77 +46,77 @@ nav .wrap{display:flex;align-items:center;gap:24px;height:68px}
 .links a{color:var(--text-2);transition:color .15s var(--ease)}
 .links a:hover{color:var(--text)}
 
-/* Buttons: square-cornered, the hover is where the colour lives */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:52px;padding:0 28px;border-radius:2px;font-size:15px;font-weight:500;letter-spacing:.02em;transition:background-color .15s var(--ease),border-color .15s var(--ease),color .15s var(--ease),transform .1s var(--ease)}
+/* Buttons: square corners; crimson only on hover */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:52px;padding:0 28px;border-radius:2px;font-size:15px;font-weight:500;letter-spacing:.02em;transition:background-color .15s var(--ease),color .15s var(--ease),transform .1s var(--ease)}
 .btn:active{transform:scale(.98)}
 .btn-main{background:var(--text);color:var(--bg)}
 .btn-main:hover{background:var(--red);color:#fff}
-.btn-line{border:1px solid var(--line-strong)}
-.btn-line:hover{border-color:var(--blue-line)}
+.textlink{display:inline-flex;align-items:center;gap:8px;color:var(--text-2);border-bottom:1px solid var(--line-strong);padding-bottom:2px;transition:color .15s var(--ease),border-color .15s var(--ease)}
+.textlink:hover{color:var(--text);border-color:var(--text)}
 
 /* Hero */
 .hero{padding:80px 0 96px}
 .hero .wrap{display:grid;gap:56px;align-items:center}
-.hero h1{font-size:clamp(52px,12vw,108px);margin:20px 0 28px}
-.hero .lead{max-width:34ch;color:var(--text-2);font-size:18px;margin-bottom:36px}
-.actions{display:flex;flex-wrap:wrap;gap:12px}
+.hero h1{font-size:clamp(48px,10.5vw,96px);margin:20px 0 28px}
+.hero .lead{max-width:36ch;color:var(--text-2);font-size:18px;margin-bottom:36px}
+.actions{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px}
 
-/* The moment: a page from the appointment book, framed like print */
+/* A page from the appointment book, framed like print */
 .book{border:1px solid var(--line-strong);outline:1px solid var(--line);outline-offset:6px;padding:28px 24px;margin:6px}
 .book-head{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:16px;border-bottom:1px solid var(--line-strong)}
 .book-head b{font:400 26px var(--serif)}
 .book-head span{font-size:13px;color:var(--muted)}
 .slots{list-style:none;padding:0}
-.slots li{display:grid;grid-template-columns:64px 1fr auto;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);font-size:15px}
+.slots li{border-bottom:1px solid var(--line)}
 .slots li:last-child{border-bottom:0}
+.slot{display:grid;grid-template-columns:64px 1fr auto;gap:16px;padding:14px 0;font-size:15px}
 .slots time{color:var(--muted)}
-.slots .taken span{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--red)}
-.slots .free{color:var(--text)}
-.slots .free em{font-style:normal;color:var(--red);font-size:13px}
-
-/* Sections with sharp rules */
-section{padding:96px 0;border-top:1px solid var(--line-strong)}
-.head{display:grid;gap:12px;margin-bottom:48px}
+.taken span{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--red)}
+a.slot{transition:background-color .15s var(--ease)}
+a.slot:hover{background:var(--surface)}
+a.slot em{font-style:normal;font-size:13px;color:var(--text-2)}
+a.slot:hover em{color:var(--text)}
+.slots .next em{color:var(--red)}
+.book-foot{margin-top:16px;font-size:13px;color:var(--muted)}
 
 /* Services & pricing with dotted leaders */
+section{padding:96px 0;border-top:1px solid var(--line-strong)}
+.head{display:grid;gap:12px;margin-bottom:48px}
 .price-list{list-style:none;padding:0}
 .price-list li{padding:24px 0;border-bottom:1px solid var(--line)}
 .price-list li:first-child{border-top:1px solid var(--line-strong)}
 .price-list li:last-child{border-bottom-color:var(--line-strong)}
 .row{display:flex;align-items:baseline;gap:12px}
-.row h3{font:400 clamp(22px,4vw,28px)/1.2 var(--serif)}
+.row h3,.row b{font:400 clamp(22px,4vw,28px)/1.2 var(--serif)}
 .row .dots{flex:1;min-width:24px;border-bottom:2px dotted var(--line-strong);transform:translateY(-6px)}
-.row b{font:400 clamp(22px,4vw,28px) var(--serif)}
 .price-list p{color:var(--text-2);font-size:15px;margin-top:6px;max-width:52ch}
 .price-list small{color:var(--muted);font-size:13px;margin-left:8px;font-family:ui-sans-serif,system-ui,sans-serif}
 .price-note{margin-top:20px;font-size:14px;color:var(--muted)}
 
-/* Why: three columns split by hairlines, no cards */
-.why{display:grid;border-top:1px solid var(--line-strong);border-bottom:1px solid var(--line-strong)}
-.why div{padding:28px 0}
-.why div+div{border-top:1px solid var(--line)}
-.why svg{color:var(--red);margin-bottom:16px}
-.why h3{font:400 22px/1.25 var(--serif);margin-bottom:8px}
-.why p{color:var(--text-2);font-size:15px}
-
-/* Map */
-.map{aspect-ratio:16/9;border:1px solid var(--line-strong);display:grid;place-items:center;padding:24px;text-align:center;background:var(--surface)}
-.map p{color:var(--text-2);margin-bottom:20px;max-width:36ch}
-.map iframe{width:100%;height:100%;border:0}
+/* Booking band: the one blue surface */
+.band{background:var(--blue);border-top:0;color:#fff}
+.band .wrap{display:grid;gap:48px}
+.band h2{margin-bottom:20px}
+.band p{color:rgba(255,255,255,.78);max-width:36ch;margin-bottom:32px}
+.band .label{color:rgba(255,255,255,.72)}
+.hours{display:grid;grid-template-columns:1fr auto;align-content:start;border-top:1px solid rgba(255,255,255,.28)}
+.hours dt,.hours dd{padding:14px 0;border-bottom:1px solid rgba(255,255,255,.16);margin:0}
+.hours dd{text-align:right}
+.hours .closed{color:rgba(255,255,255,.6)}
 
 /* Footer */
-footer{padding:0 0 128px}
-footer .inner{display:grid;gap:40px;padding-top:88px}
-footer dl{display:grid;grid-template-columns:104px 1fr;gap:12px 24px}
+footer{padding:88px 0 128px;border-top:1px solid var(--line-strong)}
+footer .wrap{display:grid;gap:40px}
+footer address{font:400 26px/1.3 var(--serif);font-style:normal;margin:16px 0 20px}
+footer dl{display:grid;grid-template-columns:104px 1fr;gap:12px 24px;align-content:start}
 footer dt{color:var(--muted)}footer dd{margin:0}
-footer dd a{border-bottom:1px solid var(--blue-line);transition:border-color .15s var(--ease)}
-footer dd a:hover{border-color:var(--red)}
-.credit{margin-top:56px;padding-top:24px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+.credit{grid-column:1/-1;padding-top:24px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
 .credit a{text-decoration:underline;text-underline-offset:3px}
 
-/* Mobile booking bar */
-.bar{position:fixed;left:0;right:0;bottom:0;z-index:20;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--line-strong)}
+/* Mobile booking bar: appears once the hero button has scrolled away */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:20;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--line-strong);transition:transform .25s var(--ease)}
 .bar .btn{width:100%}
+.bar.away{transform:translateY(110%)}
 
 @media(max-width:559px){.links{display:none}}
 @media(min-width:768px){
@@ -125,11 +125,8 @@ footer dd a:hover{border-color:var(--red)}
  .hero .wrap{grid-template-columns:1.2fr 1fr;gap:80px}
  section{padding:128px 0}
  .head{grid-template-columns:1fr 2fr;align-items:end}
- .why{grid-template-columns:repeat(3,1fr)}
- .why div{padding:32px}
- .why div:first-child{padding-left:0}
- .why div+div{border-top:0;border-left:1px solid var(--line)}
- footer .inner{grid-template-columns:1fr 1fr}
+ .band .wrap{grid-template-columns:1fr 1fr;gap:80px}
+ footer .wrap{grid-template-columns:1fr 1fr}
  footer{padding-bottom:64px}
  .bar{display:none}
 }
@@ -139,17 +136,14 @@ footer dd a:hover{border-color:var(--red)}
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
  <symbol id="i-msg" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
- <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
- <symbol id="i-blade" viewBox="0 0 24 24"><path d="M3 17 17 3l4 4L7 21H3z"/><path d="M14 6l4 4"/></symbol>
- <symbol id="i-euro" viewBox="0 0 24 24"><path d="M4 10h12M4 14h9M19 6a7.7 7.7 0 0 0-5.2-2A7.9 7.9 0 0 0 6 12c0 4.4 3.5 8 7.8 8 2 0 3.8-.8 5.2-2"/></symbol>
- <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 5-5.5 10.2-7.4 11.8a1 1 0 0 1-1.2 0C9.5 20.2 4 15 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></symbol>
+ <symbol id="i-route" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
 </svg>
 
 <nav aria-label="Hoofdmenu">
  <div class="wrap">
   <a class="logo" href="#top">Atelier Noir</a>
   <div class="status" id="status"><i></i><span>Openingsuren</span></div>
-  <div class="links"><a href="#diensten">Diensten</a><a href="#over">Over ons</a><a href="#contact">Contact</a></div>
+  <div class="links"><a href="#diensten">Prijzen</a><a href="#boeken">Uren</a><a href="#contact">Adres</a></div>
  </div>
  <div class="pole" aria-hidden="true"></div>
 </nav>
@@ -157,23 +151,23 @@ footer dd a:hover{border-color:var(--red)}
 <main>
 <header class="hero" id="top"><div class="wrap">
  <div>
-  <p class="label">Barbershop · Asse centrum</p>
-  <h1>Strak geknipt, rustig verzorgd</h1>
-  <p class="lead">Fades, beard trims en hot towel shaves. Op afspraak, zonder wachtrij. Boek je stoel met één WhatsApp-bericht.</p>
+  <p class="label">Barbershop · Kalkoven 12, Asse</p>
+  <h1>Fades en scheerbeurten met het open mes</h1>
+  <p class="lead">Elke scheerbeurt met warme handdoeken en een open mes, elke fade met de schaar afgewerkt. Op afspraak, zonder wachtrij.</p>
   <div class="actions">
-   <a class="btn btn-main" href="https://wa.me/32470000000?text=Hallo,%20ik%20wil%20graag%20een%20afspraak%20boeken." target="_blank" rel="noopener"><svg class="i"><use href="#i-msg"/></svg>Book Now</a>
-   <a class="btn btn-line" href="#diensten">Diensten en prijzen</a>
+   <a class="btn btn-main" id="hero-book" href="https://wa.me/32470000000?text=Hallo,%20ik%20wil%20graag%20een%20afspraak%20boeken.%0ADienst:%20%0ADag%20en%20uur:%20" target="_blank" rel="noopener"><svg class="i"><use href="#i-msg"/></svg>Boek je afspraak</a>
+   <a class="textlink" href="#contact">Kalkoven 12, Asse</a>
   </div>
  </div>
 
- <figure class="book num" aria-label="Voorbeeld van het afsprakenboek vandaag">
-  <div class="book-head"><b>Vandaag</b><span>Stoel 1 · Youssef</span></div>
+ <figure class="book num" aria-label="Voorbeeld van een dag in het afsprakenboek">
+  <div class="book-head"><b>Een dinsdag</b><span>Voorbeeld</span></div>
   <ul class="slots">
-   <li class="taken"><time>10:00</time><span>Fade</span><span></span></li>
-   <li class="taken"><time>10:45</time><span>Beard trim</span><span></span></li>
-   <li class="free"><time>11:30</time><span>Vrij</span><em>Eerstvolgende</em></li>
-   <li class="free"><time>13:00</time><span>Vrij</span><span></span></li>
-   <li class="free"><time>14:15</time><span>Vrij</span><span></span></li>
+   <li class="taken"><div class="slot"><time>10:00</time><span>Fade</span></div></li>
+   <li class="taken"><div class="slot"><time>10:45</time><span>Beard trim</span></div></li>
+   <li class="next"><a class="slot" href="https://wa.me/32470000000?text=Hallo,%20kan%20ik%20om%2011:30%20langskomen?%0ADienst:%20" target="_blank" rel="noopener"><time>11:30</time><span>Vrij</span><em>Aanvragen</em></a></li>
+   <li><a class="slot" href="https://wa.me/32470000000?text=Hallo,%20kan%20ik%20om%2013:00%20langskomen?%0ADienst:%20" target="_blank" rel="noopener"><time>13:00</time><span>Vrij</span><em>Aanvragen</em></a></li>
+   <li><a class="slot" href="https://wa.me/32470000000?text=Hallo,%20kan%20ik%20om%2014:15%20langskomen?%0ADienst:%20" target="_blank" rel="noopener"><time>14:15</time><span>Vrij</span><em>Aanvragen</em></a></li>
   </ul>
  </figure>
 </div></header>
@@ -189,49 +183,48 @@ footer dd a:hover{border-color:var(--red)}
  <p class="price-note">Betalen met Bancontact of cash.</p>
 </div></section>
 
-<section id="over"><div class="wrap">
- <div class="head"><p class="label">Over ons</p><h2>Waarom Atelier Noir</h2></div>
- <div class="why">
-  <div><svg class="i"><use href="#i-clock"/></svg><h3>Op afspraak, geen wachtrij</h3><p>Je stoel staat klaar op het uur dat je boekt.</p></div>
-  <div><svg class="i"><use href="#i-blade"/></svg><h3>Open mes, warme handdoek</h3><p>Elke scheerbeurt op de klassieke manier.</p></div>
-  <div><svg class="i"><use href="#i-euro"/></svg><h3>Vaste prijzen</h3><p>Wat op het menu staat, betaal je. Niets erbij.</p></div>
+<section class="band" id="boeken" aria-labelledby="b"><div class="wrap">
+ <div>
+  <p class="label">Op afspraak</p>
+  <h2 id="b">Boek je stoel</h2>
+  <p>Stuur ons op WhatsApp welke dienst je wilt en wanneer. We bevestigen je uur in hetzelfde gesprek.</p>
+  <a class="btn btn-main" href="https://wa.me/32470000000?text=Hallo,%20ik%20wil%20graag%20een%20afspraak%20boeken.%0ADienst:%20%0ADag%20en%20uur:%20" target="_blank" rel="noopener"><svg class="i"><use href="#i-msg"/></svg>Boek je afspraak</a>
  </div>
-</div></section>
-
-<section aria-labelledby="find"><div class="wrap">
- <div class="head"><p class="label">Locatie</p><h2 id="find">Vind ons</h2></div>
- <div class="map">
-  <div><p>De kaart komt van Google Maps. Google ontvangt dan je IP-adres.</p>
-  <button class="btn btn-line" type="button" onclick="this.closest('.map').innerHTML='<iframe title=&quot;Kaart Asse centrum&quot; loading=&quot;lazy&quot; src=&quot;https://www.google.com/maps?q=Asse,+Belgium&amp;z=15&amp;output=embed&quot;></iframe>'"><svg class="i"><use href="#i-pin"/></svg>Kaart tonen</button></div>
- </div>
+ <dl class="hours num" aria-label="Openingsuren">
+  <dt>Dinsdag tot vrijdag</dt><dd>10:00–19:00</dd>
+  <dt>Zaterdag</dt><dd>09:00–17:00</dd>
+  <dt class="closed">Zondag en maandag</dt><dd class="closed">Gesloten</dd>
+ </dl>
 </div></section>
 </main>
 
-<footer id="contact">
- <div class="pole" aria-hidden="true"></div>
- <div class="wrap">
-  <div class="inner">
-   <h2>Contact</h2>
-   <dl class="num">
-    <dt>Adres</dt><dd>Kalkoven 12<br>1730 Asse</dd>
-    <dt>WhatsApp</dt><dd><a href="https://wa.me/32470000000" target="_blank" rel="noopener">+32 470 00 00 00</a></dd>
-    <dt>Di–vr</dt><dd>10:00–19:00</dd>
-    <dt>Zaterdag</dt><dd>09:00–17:00</dd>
-    <dt>Zo–ma</dt><dd>Gesloten</dd>
-   </dl>
-  </div>
-  <p class="credit">Demosite door <a href="../../">VibeCode Labs</a>. Naam, adres en nummer zijn fictief.</p>
+<footer id="contact"><div class="wrap">
+ <div>
+  <p class="label">Adres</p>
+  <address>Kalkoven 12<br>1730 Asse</address>
+  <a class="textlink" href="https://www.google.com/maps/search/?api=1&amp;query=Kalkoven+12+1730+Asse" target="_blank" rel="noopener">Route plannen<svg class="i"><use href="#i-route"/></svg></a>
  </div>
-</footer>
+ <dl class="num">
+  <dt>WhatsApp</dt><dd><a class="textlink" href="https://wa.me/32470000000" target="_blank" rel="noopener">+32 470 00 00 00</a></dd>
+  <dt>Betalen</dt><dd>Bancontact of cash</dd>
+ </dl>
+ <p class="credit">Demosite door <a href="../../">VibeCode Labs</a>. Naam, adres, nummer en agenda zijn fictief.</p>
+</div></footer>
 
-<div class="bar"><a class="btn btn-main" href="https://wa.me/32470000000?text=Hallo,%20ik%20wil%20graag%20een%20afspraak%20boeken." target="_blank" rel="noopener"><svg class="i"><use href="#i-msg"/></svg>Book Now</a></div>
+<div class="bar" id="bar"><a class="btn btn-main" href="https://wa.me/32470000000?text=Hallo,%20ik%20wil%20graag%20een%20afspraak%20boeken.%0ADienst:%20%0ADag%20en%20uur:%20" target="_blank" rel="noopener"><svg class="i"><use href="#i-msg"/></svg>Boek je afspraak</a></div>
 
 <script>
-// open/closed from the hours above; [open, close] in hours, index 0 = Sunday, null = closed
+// Open/closed in Belgian time, not the visitor's clock. [open, close] in hours, index 0 = Sunday, null = closed
 const H=[null,null,[10,19],[10,19],[10,19],[10,19],[9,17]];
-const d=new Date(),t=d.getHours()+d.getMinutes()/60,r=H[d.getDay()],on=!!r&&t>=r[0]&&t<r[1];
+const p=Object.fromEntries(new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Brussels',weekday:'short',hour:'numeric',minute:'numeric',hourCycle:'h23'}).formatToParts(new Date()).map(x=>[x.type,x.value]));
+const r=H[['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(p.weekday)],t=+p.hour+p.minute/60,on=!!r&&t>=r[0]&&t<r[1];
 const s=document.getElementById('status');s.classList.toggle('on',on);
 s.lastElementChild.textContent=on?'Nu open tot '+r[1]+':00':'Gesloten';
+
+// Hide the mobile bar while the hero's own booking button is on screen
+const bar=document.getElementById('bar');
+const cta=document.getElementById('hero-book'),sync=()=>bar.classList.toggle('away',cta.getBoundingClientRect().bottom>0);
+sync();addEventListener('scroll',sync,{passive:true});
 </script>
 </body>
 </html>
