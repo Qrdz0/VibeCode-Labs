@@ -58,7 +58,7 @@ a { color: inherit; text-decoration: none; }
 .hero-mark { position: absolute; right: -60px; bottom: -40px; width: 340px; height: 340px; opacity: .5; pointer-events: none; }
 .hero .wrap { position: relative; }
 .eyebrow { margin-bottom: 24px; }
-h1 { font-size: clamp(40px, 9vw, 88px); line-height: 1.02; font-weight: 600; letter-spacing: -.035em; max-width: 13ch; }
+h1 { font-size: clamp(40px, 7vw, 80px); line-height: 1.02; font-weight: 500; letter-spacing: -.035em; max-width: 14ch; }
 h1 span { color: var(--muted); }
 .lead { margin: 28px 0 40px; max-width: 34em; font-size: 18px; color: var(--text-2); }
 .hero-meta { display: flex; flex-wrap: wrap; gap: 8px 24px; }
@@ -66,7 +66,6 @@ h1 span { color: var(--muted); }
 
 /* Contact form */
 .form { display: grid; gap: 16px; }
-.form:hover { background: var(--g1); border-color: var(--line); }
 .form-title { font-size: 22px; letter-spacing: -.02em; }
 .form label { display: grid; gap: 8px; font-size: 14px; font-weight: 500; color: var(--text-2); }
 .form input, .form select, .form textarea { width: 100%; font: 400 16px "Inter", system-ui, sans-serif; color: var(--text); background: var(--black); border: 1px solid var(--g2); border-radius: 10px; padding: 12px 14px; transition: border-color 150ms var(--ease); }
@@ -82,18 +81,21 @@ h1 span { color: var(--muted); }
 .work a:hover .arrow { transform: translate(2px, -2px); }
 .work .arrow { transition: transform 150ms var(--ease); color: var(--muted); }
 .work-top { display: flex; justify-content: space-between; align-items: baseline; }
+.work-meta { margin: 16px 0 0; }
+.hero { border-top: 0; }
+.foot-title { margin-top: 24px; }
 
 /* Sections */
 section { border-top: 1px solid var(--line); }
 .section { padding: 88px 0; }
 .head { display: grid; gap: 12px; margin-bottom: 48px; }
-h2 { font-size: clamp(32px, 5vw, 48px); line-height: 1.1; font-weight: 600; letter-spacing: -.03em; max-width: 16ch; }
-h3 { font-size: 19px; font-weight: 600; letter-spacing: -.01em; }
+h2 { font-size: clamp(32px, 5vw, 48px); line-height: 1.1; font-weight: 500; letter-spacing: -.03em; max-width: 16ch; }
+h3 { font-size: 19px; font-weight: 500; }
 
 /* Cards */
 .grid { display: grid; gap: 16px; }
 .card { background: var(--g1); border: 1px solid var(--line); border-radius: 16px; padding: 28px; transition: border-color 200ms var(--ease), background-color 200ms var(--ease); }
-.card:hover { border-color: var(--g2); background: #1e1e1e; }
+.card:not(.form):hover { border-color: var(--g2); background: #1e1e1e; }
 .card > svg { color: var(--text-2); margin-bottom: 24px; }
 .card p { color: var(--text-2); margin-top: 8px; font-size: 15px; }
 .tag { font-family: var(--mono); font-size: 12px; color: var(--muted); margin-left: 8px; font-weight: 400; }
@@ -114,7 +116,7 @@ h3 { font-size: 19px; font-weight: 600; letter-spacing: -.01em; }
 
 /* Pricing */
 .price { display: flex; flex-direction: column; }
-.price .amount { color: var(--text); font-size: 44px; font-weight: 600; letter-spacing: -.03em; margin: 16px 0 4px; font-variant-numeric: tabular-nums; }
+.price .amount { color: var(--text); font-size: 44px; font-weight: 500; letter-spacing: -.03em; margin: 16px 0 4px; font-variant-numeric: tabular-nums; }
 .price .amount small { font-size: 16px; font-weight: 400; color: var(--muted); letter-spacing: 0; }
 .price ul { list-style: none; padding: 0; margin: 24px 0 32px; flex: 1; }
 .price li { padding: 10px 0; border-top: 1px solid var(--line); font-size: 15px; color: var(--text-2); }
@@ -185,13 +187,13 @@ footer { border-top: 1px solid var(--line); padding: 64px 0 40px; }
       <a href="#services">Services</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
-      <a class="btn btn-ghost" href="#contact">Get in touch</a>
+      <a class="btn btn-ghost" href="#start">Get in touch</a>
     </nav>
   </div>
 </header>
 
 <main id="top">
-  <section class="hero" style="border-top:0">
+  <section class="hero">
     <svg class="hero-mark" aria-hidden="true"><use href="#vl-line"/></svg>
     <div class="wrap hero-grid">
       <div>
@@ -252,12 +254,12 @@ footer { border-top: 1px solid var(--line); padding: 64px 0 40px; }
         <a class="card reveal" href="demos/Asse-Kebab/" target="_blank" rel="noopener">
           <div class="work-top"><h3>Asse Kebab</h3><span class="arrow" aria-hidden="true">↗</span></div>
           <p>Takeaway site with a menu board, live open or closed status and WhatsApp ordering.</p>
-          <span class="tag" style="margin:16px 0 0">Demo · opens in a new tab</span>
+          <span class="tag work-meta">Demo · opens in a new tab</span>
         </a>
         <a class="card reveal" href="demos/Demo-Barbershop/" target="_blank" rel="noopener">
           <div class="work-top"><h3>Atelier Noir barbershop</h3><span class="arrow" aria-hidden="true">↗</span></div>
           <p>Fades, beard trims and hot towel shaves, with a price list and WhatsApp booking.</p>
-          <span class="tag" style="margin:16px 0 0">Demo · opens in a new tab</span>
+          <span class="tag work-meta">Demo · opens in a new tab</span>
         </a>
       </div>
     </div>
@@ -326,7 +328,7 @@ footer { border-top: 1px solid var(--line); padding: 64px 0 40px; }
     <div class="foot">
       <div>
         <svg width="56" height="56" aria-hidden="true"><use href="#vl"/></svg>
-        <h2 style="margin-top:24px">Let's build your website</h2>
+        <h2 class="foot-title">Let's build your website</h2>
       </div>
       <div class="foot-links">
         <span class="mono">Contact</span>
