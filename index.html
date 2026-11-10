@@ -12,10 +12,11 @@
 <meta property="og:locale" content="en_BE">
 <meta name="theme-color" content="#0a0a0a">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='10' fill='%230a0a0a'/%3E%3Cpath d='M10 12l10 24 10-24' fill='none' stroke='%238a8a8a' stroke-width='4'/%3E%3Cpath d='M22 12v24h16' fill='none' stroke='%23f5f5f5' stroke-width='4'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+/* Self-hosted so no visitor IPs go to Google; both are variable fonts, Latin subset only */
+@font-face { font-family: "Inter"; font-weight: 100 900; font-display: swap; src: url(fonts/inter-latin.woff2) format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-weight: 100 800; font-display: swap; src: url(fonts/jetbrains-mono-latin.woff2) format("woff2"); }
 :root {
   --black: #0a0a0a;
   --g1: #1a1a1a;
