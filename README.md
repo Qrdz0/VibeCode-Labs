@@ -59,6 +59,21 @@ Location: Asse, Belgium
 
 ---
 
+
+## Built With AI
+
+VibeCode Labs is transparent about its tools. This project was built with the
+assistance of AI (Claude by Anthropic), used for code generation, design
+iteration, and documentation. All final code has been reviewed, tested, and
+adapted by the human developer before shipping.
+
+We believe in honesty about how modern software gets built. AI is a tool, not a
+replacement for craft, judgment, and accountability.
+
+If you have questions about our development process, reach out:
+unbanqrdz@gmail.com
+
+
 ## License
 
 This project is licensed under the VibeCode Labs Proprietary License
