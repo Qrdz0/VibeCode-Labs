@@ -11,7 +11,7 @@ fast, mobile-friendly websites for local businesses — bakeries, cafés,
 barbershops, and anyone who needs a clean online presence without paying
 agency prices.
 
-The studio is run by [Your Name] with the support of a parent/legal guardian,
+The studio is run by [qrdz] with the support of a parent/legal guardian,
 who co-signs client contracts and handles invoicing. This keeps everything
 legal and transparent for both sides.
 
