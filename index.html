@@ -68,6 +68,8 @@ h1 span { color: var(--muted); }
 .contact { display: grid; gap: 48px; align-items: start; }
 .contact .lead { margin: 20px 0 24px; }
 .form { display: grid; gap: 16px; }
+/* Spam trap: bots fill it, Formspree drops those submissions */
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
 .form-note { font-size: 13px; color: var(--muted); }
 .form-note a { color: var(--text-2); text-decoration: underline; text-underline-offset: 3px; }
 .form-error { font-size: 14px; color: #f08a80; }
@@ -205,7 +207,7 @@ footer { border-top: 1px solid var(--line); padding: 64px 0 40px; }
         <a class="link" href="#work">View demos</a>
       </div>
       <div class="hero-meta mono reveal">
-        <span>Pure HTML and CSS</span><span>GDPR-friendly</span><span>Dutch</span>
+        <span>Pure HTML and CSS</span><span>Privacy-conscious</span><span>Dutch</span>
       </div>
     </div>
   </section>
@@ -227,7 +229,7 @@ footer { border-top: 1px solid var(--line); padding: 64px 0 40px; }
         <article class="card reveal">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4M8 11l2 2 4-4"/></svg>
           <h3>Compliance audit <span class="tag">€20 one-time</span></h3>
-          <p>A quick check of your current site for privacy, speed, and mobile issues.</p>
+          <p>A quick check of your current site for privacy, speed and mobile issues.</p>
         </article>
       </div>
     </div>
@@ -300,7 +302,7 @@ footer { border-top: 1px solid var(--line); padding: 64px 0 40px; }
         <article class="card price reveal">
           <h3>Audit</h3>
           <p class="amount">€20<small> one-time</small></p>
-          <p>A quick check of your current site for privacy and speed issues.</p>
+          <p>A quick check of your current site for privacy, speed and mobile issues.</p>
           <ul><li>Privacy and cookie review</li><li>Speed and mobile check</li><li>Written report with fixes</li></ul>
           <a class="btn btn-plain" href="#start">Book Audit</a>
         </article>
@@ -327,12 +329,13 @@ footer { border-top: 1px solid var(--line); padding: 64px 0 40px; }
           </label>
           <label>Email<input type="email" name="email" required autocomplete="email"></label>
           <label>Message<textarea name="message" rows="4" required placeholder="What does your business need?"></textarea></label>
+          <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
           <input type="hidden" name="_subject" value="New enquiry from the VibeCode Labs site">
           <p class="form-error" id="form-error" hidden></p>
           <button class="btn btn-primary" type="submit">Send message
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </button>
-          <p class="form-note">By submitting, you agree to the <a href="terms.html">Privacy Policy</a>.</p>
+          <p class="form-note">By submitting, you agree to the <a href="terms.html#privacy">Privacy Policy</a>.</p>
         </form>
       </div>
     </div>

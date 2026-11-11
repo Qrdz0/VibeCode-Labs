@@ -77,7 +77,6 @@ a.slot:hover{background:var(--surface)}
 a.slot em{font-style:normal;font-size:13px;color:var(--text-2)}
 a.slot:hover em{color:var(--text)}
 .slots .next em{color:var(--red)}
-.book-foot{margin-top:16px;font-size:13px;color:var(--muted)}
 
 /* Services & pricing with dotted leaders */
 section{padding:96px 0;border-top:1px solid var(--line-strong)}
@@ -145,6 +144,12 @@ footer dt{color:var(--muted)}footer dd{margin:0}
  .bar{display:none}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+/* Demo notice instead of opening WhatsApp */
+.toast{position:fixed;left:16px;right:16px;bottom:88px;z-index:40;max-width:440px;margin:auto;padding:14px 16px;background:var(--surface);border:1px solid var(--line);border-radius:10px;color:var(--text);font-size:14px;line-height:1.5;opacity:0;transform:translateY(8px);pointer-events:none;transition:opacity .2s ease,transform .2s ease}
+.toast.show{opacity:1;transform:none}
+.toast q{display:block;margin-top:6px;color:var(--text-2)}
+@media(min-width:768px){.toast{bottom:24px}}
 </style>
 </head>
 <body>
@@ -169,7 +174,7 @@ footer dt{color:var(--muted)}footer dd{margin:0}
   <h1>Fades en scheerbeurten met het open mes</h1>
   <p class="lead">Elke scheerbeurt met warme handdoeken en een open mes, elke fade met de schaar afgewerkt. Op afspraak, zonder wachtrij.</p>
   <div class="actions">
-   <a class="btn btn-main" id="hero-book" href="https://wa.me/32470000000?text=Hallo,%20ik%20wil%20graag%20een%20afspraak%20boeken.%0ADienst:%20%0ADag%20en%20uur:%20" target="_blank" rel="noopener"><svg class="i"><use href="#i-msg"/></svg>Boek je afspraak</a>
+   <a class="btn btn-main" id="hero-book" href="#demo-whatsapp" data-msg="Hallo, ik wil graag een afspraak boeken. Dienst:  Dag en uur: "><svg class="i"><use href="#i-msg"/></svg>Boek je afspraak</a>
    <a class="textlink" href="#werk">Bekijk ons werk</a>
   </div>
  </div>
@@ -179,9 +184,9 @@ footer dt{color:var(--muted)}footer dd{margin:0}
   <ul class="slots">
    <li class="taken"><div class="slot"><time>10:00</time><span>Fade</span></div></li>
    <li class="taken"><div class="slot"><time>10:45</time><span>Beard trim</span></div></li>
-   <li class="next"><a class="slot" href="https://wa.me/32470000000?text=Hallo,%20kan%20ik%20om%2011:30%20langskomen?%0ADienst:%20" target="_blank" rel="noopener"><time>11:30</time><span>Vrij</span><em>Aanvragen</em></a></li>
-   <li><a class="slot" href="https://wa.me/32470000000?text=Hallo,%20kan%20ik%20om%2013:00%20langskomen?%0ADienst:%20" target="_blank" rel="noopener"><time>13:00</time><span>Vrij</span><em>Aanvragen</em></a></li>
-   <li><a class="slot" href="https://wa.me/32470000000?text=Hallo,%20kan%20ik%20om%2014:15%20langskomen?%0ADienst:%20" target="_blank" rel="noopener"><time>14:15</time><span>Vrij</span><em>Aanvragen</em></a></li>
+   <li class="next"><a class="slot" href="#demo-whatsapp" data-msg="Hallo, kan ik om 11:30 langskomen? Dienst: "><time>11:30</time><span>Vrij</span><em>Aanvragen</em></a></li>
+   <li><a class="slot" href="#demo-whatsapp" data-msg="Hallo, kan ik om 13:00 langskomen? Dienst: "><time>13:00</time><span>Vrij</span><em>Aanvragen</em></a></li>
+   <li><a class="slot" href="#demo-whatsapp" data-msg="Hallo, kan ik om 14:15 langskomen? Dienst: "><time>14:15</time><span>Vrij</span><em>Aanvragen</em></a></li>
   </ul>
  </figure>
 </div></header>
@@ -200,9 +205,9 @@ footer dt{color:var(--muted)}footer dd{margin:0}
 <section id="werk" aria-labelledby="w"><div class="wrap">
  <div class="head"><p class="label">Het atelier</p><h2 id="w">Ons werk</h2></div>
  <h3 class="sub">De barbers</h3>
- <div class="photos barbers"><div class="photo">Photo coming soon</div><div class="photo">Photo coming soon</div><div class="photo">Photo coming soon</div></div>
+ <div class="photos barbers"><div class="photo">Foto volgt</div><div class="photo">Foto volgt</div><div class="photo">Foto volgt</div></div>
  <h3 class="sub">Recent werk</h3>
- <div class="photos"><div class="photo">Photo coming soon</div><div class="photo">Photo coming soon</div><div class="photo">Photo coming soon</div><div class="photo">Photo coming soon</div><div class="photo">Photo coming soon</div><div class="photo">Photo coming soon</div></div>
+ <div class="photos"><div class="photo">Foto volgt</div><div class="photo">Foto volgt</div><div class="photo">Foto volgt</div><div class="photo">Foto volgt</div><div class="photo">Foto volgt</div><div class="photo">Foto volgt</div></div>
 </div></section>
 
 <section class="band" id="boeken" aria-labelledby="b"><div class="wrap">
@@ -210,7 +215,7 @@ footer dt{color:var(--muted)}footer dd{margin:0}
   <p class="label">Op afspraak</p>
   <h2 id="b">Boek je stoel</h2>
   <p>Stuur ons op WhatsApp welke dienst je wilt en wanneer. We bevestigen je uur in hetzelfde gesprek.</p>
-  <a class="btn btn-main" href="https://wa.me/32470000000?text=Hallo,%20ik%20wil%20graag%20een%20afspraak%20boeken.%0ADienst:%20%0ADag%20en%20uur:%20" target="_blank" rel="noopener"><svg class="i"><use href="#i-msg"/></svg>Boek je afspraak</a>
+  <a class="btn btn-main" href="#demo-whatsapp" data-msg="Hallo, ik wil graag een afspraak boeken. Dienst:  Dag en uur: "><svg class="i"><use href="#i-msg"/></svg>Boek je afspraak</a>
  </div>
  <dl class="hours num" aria-label="Openingsuren">
   <dt>Dinsdag tot vrijdag</dt><dd>10:00–19:00</dd>
@@ -226,13 +231,13 @@ footer dt{color:var(--muted)}footer dd{margin:0}
   <address>Asse centrum</address>
  </div>
  <dl class="num">
-  <dt>WhatsApp</dt><dd><a class="textlink" href="https://wa.me/32470000000" target="_blank" rel="noopener">+32 470 00 00 00</a></dd>
+  <dt>WhatsApp</dt><dd>+32 4xx xx xx xx (demo)</dd>
   <dt>Betalen</dt><dd>Bancontact of cash</dd>
  </dl>
- <p class="credit">Demosite door <a href="../../">VibeCode Labs</a>. Naam, nummer en agenda zijn fictief.</p>
+ <p class="credit">Demosite door <a href="../../">VibeCode Labs</a>. Naam, nummer en agenda zijn fictief. <span id="demo-whatsapp">In deze demo openen de knoppen geen WhatsApp.</span></p>
 </div></footer>
 
-<div class="bar" id="bar"><a class="btn btn-main" href="https://wa.me/32470000000?text=Hallo,%20ik%20wil%20graag%20een%20afspraak%20boeken.%0ADienst:%20%0ADag%20en%20uur:%20" target="_blank" rel="noopener"><svg class="i"><use href="#i-msg"/></svg>Boek je afspraak</a></div>
+<div class="bar" id="bar"><a class="btn btn-main" href="#demo-whatsapp" data-msg="Hallo, ik wil graag een afspraak boeken. Dienst:  Dag en uur: "><svg class="i"><use href="#i-msg"/></svg>Boek je afspraak</a></div>
 
 <script>
 // Open/closed in Belgian time, not the visitor's clock. [open, close] in hours, index 0 = Sunday, null = closed
@@ -246,6 +251,17 @@ s.lastElementChild.textContent=on?'Nu open tot '+r[1]+':00':'Gesloten';
 const bar=document.getElementById('bar');
 const cta=document.getElementById('hero-book'),sync=()=>bar.classList.toggle('away',cta.getBoundingClientRect().bottom>0);
 sync();addEventListener('scroll',sync,{passive:true});
+</script>
+<p class="toast" id="toast" role="status" aria-live="polite"></p>
+<script>
+// Demo only: show the message WhatsApp would open with, instead of messaging a made-up number
+const toast=document.getElementById('toast');let tt;
+document.querySelectorAll('a[data-msg]').forEach(a=>a.addEventListener('click',e=>{
+  e.preventDefault();
+  toast.textContent='Demo: in de echte site opent WhatsApp met dit bericht klaar.';
+  const q=document.createElement('q');q.textContent=a.dataset.msg;toast.append(q);
+  toast.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>toast.classList.remove('show'),4000);
+}));
 </script>
 </body>
 </html>

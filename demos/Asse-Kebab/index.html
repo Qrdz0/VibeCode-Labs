@@ -123,6 +123,12 @@ footer dt{color:var(--muted)}footer dd{margin:0}
  .bar{display:none}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+/* Demo notice instead of opening WhatsApp */
+.toast{position:fixed;left:16px;right:16px;bottom:88px;z-index:40;max-width:440px;margin:auto;padding:14px 16px;background:var(--surface);border:1px solid var(--line);border-radius:10px;color:var(--text);font-size:14px;line-height:1.5;opacity:0;transform:translateY(8px);pointer-events:none;transition:opacity .2s ease,transform .2s ease}
+.toast.show{opacity:1;transform:none}
+.toast q{display:block;margin-top:6px;color:var(--text-2)}
+@media(min-width:768px){.toast{bottom:24px}}
 </style>
 </head>
 <body>
@@ -146,7 +152,7 @@ footer dt{color:var(--muted)}footer dd{margin:0}
   <p class="place">Afhalen in Asse</p>
   <h1>Van de grill. <span>Tot middernacht.</span></h1>
   <p class="lead">Kebab, durum en falafel met huisgemaakte sauzen. Stuur je bestelling via WhatsApp en haal ze warm op.</p>
-  <a class="btn btn-orange" id="hero-order" href="https://wa.me/32470000000?text=Hallo,%20ik%20wil%20graag%20bestellen%20om%20af%20te%20halen." target="_blank" rel="noopener"><svg class="i"><use href="#i-msg"/></svg>Bestel via WhatsApp</a>
+  <a class="btn btn-orange" id="hero-order" href="#demo-whatsapp" data-msg="Hallo, ik wil graag bestellen om af te halen."><svg class="i"><use href="#i-msg"/></svg>Bestel via WhatsApp</a>
   <ul class="facts num">
    <li><svg class="i"><use href="#i-phone"/></svg>Bestellen zonder app of account</li>
    <li><svg class="i"><use href="#i-moon"/></svg>Vrijdag en zaterdag open tot 00:00</li>
@@ -166,13 +172,13 @@ footer dt{color:var(--muted)}footer dd{margin:0}
  <div class="groups num">
   <div class="group">
    <h3>Broodjes en wraps</h3>
-   <a class="dish" href="https://wa.me/32470000000?text=Hallo,%20ik%20wil%20graag%201%C3%97%20Classic%20Kebab%20bestellen." target="_blank" rel="noopener"><h4>Classic Kebab</h4><span class="price">€8,50</span><p>Gegrild lamsvlees, verse salade en looksaus</p><span class="arrow" aria-hidden="true">→</span></a>
-   <a class="dish" href="https://wa.me/32470000000?text=Hallo,%20ik%20wil%20graag%201%C3%97%20Durum%20bestellen." target="_blank" rel="noopener"><h4>Durum</h4><span class="price">€9,00</span><p>Opgerold in warm platbrood, saus naar keuze</p><span class="arrow" aria-hidden="true">→</span></a>
-   <a class="dish" href="https://wa.me/32470000000?text=Hallo,%20ik%20wil%20graag%201%C3%97%20Falafel%20bestellen." target="_blank" rel="noopener"><h4>Falafel</h4><span class="price">€7,50</span><p>Vegetarisch, met hummus en verse groenten</p><span class="arrow" aria-hidden="true">→</span></a>
+   <a class="dish" href="#demo-whatsapp" data-msg="Hallo, ik wil graag 1× Classic Kebab bestellen."><h4>Classic Kebab</h4><span class="price">€8,50</span><p>Gegrild lamsvlees, verse salade en looksaus</p><span class="arrow" aria-hidden="true">→</span></a>
+   <a class="dish" href="#demo-whatsapp" data-msg="Hallo, ik wil graag 1× Durum bestellen."><h4>Durum</h4><span class="price">€9,00</span><p>Opgerold in warm platbrood, saus naar keuze</p><span class="arrow" aria-hidden="true">→</span></a>
+   <a class="dish" href="#demo-whatsapp" data-msg="Hallo, ik wil graag 1× Falafel bestellen."><h4>Falafel</h4><span class="price">€7,50</span><p>Vegetarisch, met hummus en verse groenten</p><span class="arrow" aria-hidden="true">→</span></a>
   </div>
   <div class="group">
    <h3>Boxen</h3>
-   <a class="dish" href="https://wa.me/32470000000?text=Hallo,%20ik%20wil%20graag%201%C3%97%20Kebab%20Box%20bestellen." target="_blank" rel="noopener"><h4>Kebab Box</h4><span class="price">€10,50</span><p>Kebab met krokante frietjes en saus naar keuze</p><span class="arrow" aria-hidden="true">→</span></a>
+   <a class="dish" href="#demo-whatsapp" data-msg="Hallo, ik wil graag 1× Kebab Box bestellen."><h4>Kebab Box</h4><span class="price">€10,50</span><p>Kebab met krokante frietjes en saus naar keuze</p><span class="arrow" aria-hidden="true">→</span></a>
    <h3>Huisgemaakte sauzen</h3>
    <ul class="sauces"><li>Look</li><li>Samurai</li><li>Andalouse</li><li>Pikant</li></ul>
   </div>
@@ -186,15 +192,15 @@ footer dt{color:var(--muted)}footer dd{margin:0}
   <address>Asse</address>
  </div>
  <dl class="num">
-  <dt>WhatsApp</dt><dd><a class="route" href="https://wa.me/32470000000" target="_blank" rel="noopener">+32 470 00 00 00</a></dd>
+  <dt>WhatsApp</dt><dd>+32 4xx xx xx xx (demo)</dd>
   <dt>Ma–do</dt><dd>11:00–22:00</dd>
   <dt>Vr–za</dt><dd>11:00–00:00</dd>
   <dt>Zondag</dt><dd>12:00–22:00</dd>
  </dl>
- <p class="credit">Demosite door <a href="../../">VibeCode Labs</a>. Nummer en bestelling zijn fictief.</p>
+ <p class="credit">Demosite door <a href="../../">VibeCode Labs</a>. Nummer en bestelling zijn fictief. <span id="demo-whatsapp">In deze demo openen de knoppen geen WhatsApp.</span></p>
 </div></footer>
 
-<div class="bar" id="bar"><a class="btn btn-orange" href="https://wa.me/32470000000?text=Hallo,%20ik%20wil%20graag%20bestellen%20om%20af%20te%20halen." target="_blank" rel="noopener"><svg class="i"><use href="#i-msg"/></svg>Bestel via WhatsApp</a></div>
+<div class="bar" id="bar"><a class="btn btn-orange" href="#demo-whatsapp" data-msg="Hallo, ik wil graag bestellen om af te halen."><svg class="i"><use href="#i-msg"/></svg>Bestel via WhatsApp</a></div>
 
 <script>
 // Open/closed in Belgian time, not the visitor's clock. [open, close] in hours, index 0 = Sunday
@@ -208,6 +214,17 @@ s.lastElementChild.textContent=on?'Nu open tot '+String(c%24).padStart(2,'0')+':
 const bar=document.getElementById('bar');
 const cta=document.getElementById('hero-order'),sync=()=>bar.classList.toggle('away',cta.getBoundingClientRect().bottom>0);
 sync();addEventListener('scroll',sync,{passive:true});
+</script>
+<p class="toast" id="toast" role="status" aria-live="polite"></p>
+<script>
+// Demo only: show the message WhatsApp would open with, instead of messaging a made-up number
+const toast=document.getElementById('toast');let tt;
+document.querySelectorAll('a[data-msg]').forEach(a=>a.addEventListener('click',e=>{
+  e.preventDefault();
+  toast.textContent='Demo: in de echte site opent WhatsApp met dit bericht klaar.';
+  const q=document.createElement('q');q.textContent=a.dataset.msg;toast.append(q);
+  toast.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>toast.classList.remove('show'),4000);
+}));
 </script>
 </body>
 </html>

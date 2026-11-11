@@ -26,20 +26,24 @@ We focus on:
 
 ## Services
 
-### Custom Website Development
-A simple, fast, mobile-friendly website for your business. One-page or
-multi-page, depending on what you need. Includes contact form, opening hours,
-location, and a design that works on every screen.
+The same services and prices as on the website:
+https://qrdz0.github.io/VibeCode-Labs/#services
 
-### Privacy-First Design
-We build websites that respect your visitors' privacy. That means no
-unnecessary cookies, no third-party trackers, and a clear cookie notice where
-required. We are not lawyers — if you need a full legal GDPR audit, we'll point
-you to a qualified professional.
+### Custom website development
+A site designed for your shop, not a template. Fast on any phone and easy for
+customers to find on Google.
 
-### Client Portal (Premium Add-On)
-A simple dashboard where you can check your site's uptime, basic visitor stats,
-and update your own content. Available as a monthly add-on.
+- **Starter, €150:** a one-page site for a shop that needs to be found.
+- **Pro, €300:** a full site with room for your menu, services and story, up to
+  five pages.
+
+### Compliance audit, €20 one-time
+A quick check of your current site for privacy, speed and mobile issues. We are
+not lawyers. If you need a full legal GDPR audit, we'll point you to a
+qualified professional.
+
+### Privacy-conscious design
+No unnecessary cookies or third-party trackers.
 
 ---
 
@@ -76,45 +80,4 @@ unbanqrdz@gmail.com
 
 ## License
 
-This project is licensed under the VibeCode Labs Proprietary License
-
-Copyright (c) 2026 VibeCode Labs
-[## License
-
-**VibeCode Labs Proprietary License**  
-Copyright (c) 2026 VibeCode Labs, Asse, Belgium. All rights reserved.
-
-This license applies to all source code, HTML, CSS, JavaScript, design assets, and documentation in this repository (the "Software").
-
-### What you MAY do
-
-1. **View** the source code for learning and evaluation purposes.
-2. **Fork** this repository privately for personal, non-commercial study.
-3. **Use the public preview** of this website for reference.
-
-### What you MAY NOT do
-
-1. **Copy, reproduce, or redistribute** any part of the Software — in whole or in part — without prior written permission from VibeCode Labs.
-2. **Modify** the Software and publish the modified version as your own work.
-3. **Use the Software for commercial purposes**, including but not limited to:
-   - Selling the Software or any derivative of it.
-   - Using it as a template for a paid website.
-   - Including it in a product or service you charge for.
-4. **Remove or alter** this license, any copyright notices, or any attribution present in the Software.
-5. **Claim authorship** of the Software or any part of it.
-
-### Attribution
-
-If you are given written permission to use any part of the Software, you must include a visible credit to VibeCode Labs and a link to the original repository.
-
-### No Warranty
-
-The Software is provided "as is," without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose, and non-infringement. In no event shall VibeCode Labs be liable for any claim, damages, or other liability arising from, out of, or in connection with the Software or the use or other dealings in the Software.
-
-### Governing Law
-
-This license is governed by the laws of Belgium. Any dispute arising from this license shall be resolved in the courts of Brussels, Belgium.
-
-### Contact
-
-For permission requests, contact: unbanqrdz@gmail.com]
+Proprietary. See [LICENSE](LICENSE).
