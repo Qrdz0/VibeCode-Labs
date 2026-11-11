@@ -35,7 +35,7 @@ customers to find on Google.
 
 - **Starter, €150:** a one-page site for a shop that needs to be found.
 - **Pro, €300:** a full site with room for your menu, services and story, up to
-  five pages.
+  4 pages, plus Google Maps integration.
 
 Domain and hosting are not included in any package. You pay for them
 separately.

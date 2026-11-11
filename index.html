@@ -3,10 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>VibeCode Labs · Snelle websites voor lokale zaken in Asse</title>
+<title>Websites voor lokale zaken in Asse | VibeCode Labs</title>
 <meta name="description" content="Webdesignstudio in Asse. Snelle, mobielvriendelijke en privacybewuste websites voor bakkerijen, cafés en barbershops.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="VibeCode Labs · Snelle websites voor lokale zaken">
+<meta property="og:title" content="Websites voor lokale zaken in Asse | VibeCode Labs">
+<meta property="og:image" content="https://qrdz0.github.io/VibeCode-Labs/og-image.jpg">
 <meta property="og:description" content="Snelle, mobielvriendelijke websites voor lokale zaken in Asse en omgeving.">
 <meta property="og:url" content="https://qrdz0.github.io/VibeCode-Labs/">
 <meta property="og:locale" content="nl_BE">
@@ -89,6 +90,10 @@ h1 .dim { color: var(--muted); }
 .form select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%); background-position: calc(100% - 20px) 50%, calc(100% - 15px) 50%; background-size: 5px 5px; background-repeat: no-repeat; }
 .form ::placeholder { color: #6b6b6b; }
 .form input:focus, .form select:focus, .form textarea:focus { outline: none; border-color: var(--accent); }
+.form .consent { display: flex; align-items: center; gap: 12px; min-height: 44px; font-weight: 400; }
+.form .consent input { width: 20px; height: 20px; padding: 0; flex: none; accent-color: var(--accent); }
+.form .consent a { color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
+.free-note { margin-top: 16px; font-size: 14px; color: var(--accent); }
 .form .btn { justify-content: center; margin-top: 8px; border: 0; cursor: pointer; }
 
 /* Work */
@@ -250,6 +255,7 @@ try { if (localStorage.getItem('lang') === 'en') document.documentElement.lang =
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4M8 11l2 2 4-4"/></svg>
           <h3>Website Health Check <span class="tag"><span class="t-nl">€20 eenmalig</span><span class="t-en" lang="en">€20 one-time</span></span></h3>
           <p><span class="t-nl">Een controle van uw huidige site op mobiele snelheid, basis-SEO en privacyrisico's.</span><span class="t-en" lang="en">A check of your current site for mobile speed, basic SEO and privacy risks.</span></p>
+          <p class="free-note"><span class="t-nl">Gratis bij aankoop van een Starter- of Pro-website.</span><span class="t-en" lang="en">Free if you purchase a Starter or Pro website.</span></p>
         </article>
       </div>
     </div>
@@ -339,7 +345,7 @@ try { if (localStorage.getItem('lang') === 'en') document.documentElement.lang =
           <p><span class="t-nl">Een volledige site met ruimte voor uw menu, diensten en verhaal.</span><span class="t-en" lang="en">A full site with room for your menu, services and story.</span></p>
           <p class="list-label"><span class="t-nl">Inbegrepen</span><span class="t-en" lang="en">What's included</span></p>
           <ul class="inc">
-            <li><span class="t-nl">Tot vijf pagina's</span><span class="t-en" lang="en">Up to five pages</span></li>
+            <li><span class="t-nl">Tot 4 pagina's, plus Google Maps-integratie</span><span class="t-en" lang="en">Up to 4 pages, plus Google Maps integration</span></li>
             <li><span class="t-nl">Mobielvriendelijk ontwerp</span><span class="t-en" lang="en">Mobile-friendly design</span></li>
             <li><span class="t-nl">Contactformulier</span><span class="t-en" lang="en">Contact form</span></li>
             <li><span class="t-nl">Basis-SEO</span><span class="t-en" lang="en">Basic SEO</span></li>
@@ -348,7 +354,7 @@ try { if (localStorage.getItem('lang') === 'en') document.documentElement.lang =
           </ul>
           <p class="list-label"><span class="t-nl">Niet inbegrepen</span><span class="t-en" lang="en">Not included</span></p>
           <ul class="exc">
-            <li><span class="t-nl">Meer dan vijf pagina's</span><span class="t-en" lang="en">More than five pages</span></li>
+            <li><span class="t-nl">Meer dan 4 pagina's</span><span class="t-en" lang="en">More than 4 pages</span></li>
             <li><span class="t-nl">Juridische controle van uw privacyverklaring</span><span class="t-en" lang="en">Legal review of your privacy policy</span></li>
             <li><span class="t-nl">Kosten van de domeinnaam</span><span class="t-en" lang="en">Domain name cost</span></li>
             <li><span class="t-nl">Maandelijkse hostingkosten</span><span class="t-en" lang="en">Monthly hosting cost</span></li>
@@ -375,7 +381,7 @@ try { if (localStorage.getItem('lang') === 'en') document.documentElement.lang =
           <a class="btn btn-plain" href="#start"><span class="t-nl">Boek een Health Check</span><span class="t-en" lang="en">Book Health Check</span></a>
         </article>
       </div>
-      <p class="price-note reveal"><span class="t-nl">Domein en hosting zijn in geen enkel pakket inbegrepen. Die betaalt u apart.</span><span class="t-en" lang="en">Domain and hosting are not included in any package. You pay for them separately.</span></p>
+      <p class="price-note reveal"><span class="t-nl">Voor elk project vragen we een voorschot van 50%. Starter bevat 1 revisieronde, Pro bevat er 2. Domein en hosting betaalt de klant rechtstreeks.</span><span class="t-en" lang="en">All projects require a 50% deposit. Starter includes 1 revision round; Pro includes 2. Domain and hosting are paid directly by the client.</span></p>
     </div>
   </section>
 
@@ -400,11 +406,11 @@ try { if (localStorage.getItem('lang') === 'en') document.documentElement.lang =
           <label><span><span class="t-nl">Bericht</span><span class="t-en" lang="en">Message</span></span><textarea name="message" rows="4" required placeholder="Wat heeft uw zaak nodig?" data-en-placeholder="What does your business need?"></textarea></label>
           <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
           <input type="hidden" name="_subject" value="New enquiry from the VibeCode Labs site">
+          <label class="consent"><input type="checkbox" name="privacy_consent" value="yes" required><span><span class="t-nl">Ik ga akkoord met de <a href="terms.html#privacy">privacyverklaring</a></span><span class="t-en" lang="en">I agree to the <a href="terms.html#privacy">Privacy Policy</a></span></span></label>
           <p class="form-error" id="form-error" hidden></p>
           <button class="btn btn-primary" type="submit"><span class="t-nl">Verstuur bericht</span><span class="t-en" lang="en">Send message</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </button>
-          <p class="form-note"><span class="t-nl">Door te versturen gaat u akkoord met de <a href="terms.html#privacy">privacyverklaring</a>.</span><span class="t-en" lang="en">By submitting, you agree to the <a href="terms.html#privacy">Privacy Policy</a>.</span></p>
         </form>
       </div>
     </div>
