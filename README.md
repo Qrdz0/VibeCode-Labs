@@ -37,7 +37,10 @@ customers to find on Google.
 - **Pro, €300:** a full site with room for your menu, services and story, up to
   five pages.
 
-### Compliance audit, €20 one-time
+Domain and hosting are not included in any package. You pay for them
+separately.
+
+### Website Health Check, €20 one-time
 A quick check of your current site for privacy, speed and mobile issues. We are
 not lawyers. If you need a full legal GDPR audit, we'll point you to a
 qualified professional.
