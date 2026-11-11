@@ -103,6 +103,11 @@ h1 .dim { color: var(--muted); }
 .work .arrow { transition: transform 150ms var(--ease); color: var(--muted); }
 .work-top { display: flex; justify-content: space-between; align-items: baseline; }
 .work-meta { margin: 16px 0 0; }
+/* Framed screenshot; the image zooms inside its frame so the card itself never moves */
+.shot { display: block; margin-bottom: 20px; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--black); }
+.shot img { display: block; width: 100%; height: auto; transform-origin: top center; transition: transform 300ms var(--ease); }
+.work a:hover .shot img { transform: scale(1.03); }
+@media (prefers-reduced-motion: reduce) { .shot img { transition: none; } }
 .hero { border-top: 0; }
 .foot-title { margin-top: 24px; }
 
@@ -265,17 +270,20 @@ try { if (localStorage.getItem('lang') === 'en') document.documentElement.lang =
     <div class="wrap">
       <div class="head reveal"><p class="mono"><span class="t-nl">Recent werk</span><span class="t-en" lang="en">Recent work</span></p><h2><span class="t-nl">Demosites voor lokale zaken</span><span class="t-en" lang="en">Demo sites for local shops</span></h2></div>
       <div class="work">
-        <a class="card reveal" href="demos/Asse-Kebab/" target="_blank" rel="noopener">
+        <a class="card reveal" href="https://qrdz0.github.io/VibeCode-Labs/demos/Asse-Kebab/" target="_blank" rel="noopener">
+          <span class="shot"><img src="demos/kebab-preview.jpg" alt="Startpagina van de Asse Kebab demo: zwarte pagina met een oranje WhatsApp-knop en een voorbeeldbestelling in een chatvenster" width="1200" height="750" loading="lazy"></span>
           <div class="work-top"><h3>Asse Kebab</h3><span class="arrow" aria-hidden="true">↗</span></div>
           <p><span class="t-nl">Afhaalsite met een menubord, live open- of gesloten-status en bestellen via WhatsApp.</span><span class="t-en" lang="en">Takeaway site with a menu board, live open or closed status and WhatsApp ordering.</span></p>
           <span class="tag work-meta"><span class="t-nl">Demo · opent in een nieuw tabblad</span><span class="t-en" lang="en">Demo · opens in a new tab</span></span>
         </a>
-        <a class="card reveal" href="demos/Demo-Barbershop/" target="_blank" rel="noopener">
+        <a class="card reveal" href="https://qrdz0.github.io/VibeCode-Labs/demos/Demo-Barbershop/" target="_blank" rel="noopener">
+          <span class="shot"><img src="demos/barber-preview.jpg" alt="Startpagina van de Atelier Noir demo: zwarte pagina met een serif titel en een afsprakenboek met vrije uren" width="1200" height="750" loading="lazy"></span>
           <div class="work-top"><h3>Atelier Noir barbershop</h3><span class="arrow" aria-hidden="true">↗</span></div>
           <p><span class="t-nl">Fades, baardverzorging en hot towel shaves, met een prijslijst en boeken via WhatsApp.</span><span class="t-en" lang="en">Fades, beard trims and hot towel shaves, with a price list and WhatsApp booking.</span></p>
           <span class="tag work-meta"><span class="t-nl">Demo · opent in een nieuw tabblad</span><span class="t-en" lang="en">Demo · opens in a new tab</span></span>
         </a>
-        <a class="card reveal" href="demos/Demo-Bakery/" target="_blank" rel="noopener">
+        <a class="card reveal" href="https://qrdz0.github.io/VibeCode-Labs/demos/Demo-Bakery/" target="_blank" rel="noopener">
+          <span class="shot"><img src="demos/bakery-preview.jpg" alt="Startpagina van de Bakkerij Korst demo: crèmekleurige pagina met een gouden bestelknop en een lijst van wat uit de oven kwam" width="1200" height="750" loading="lazy"></span>
           <div class="work-top"><h3>Bakkerij Korst</h3><span class="arrow" aria-hidden="true">↗</span></div>
           <p><span class="t-nl">Ambachtelijke bakkerij met het brood en gebak van de dag, ovenuren en afhalen bestellen via WhatsApp.</span><span class="t-en" lang="en">Artisan bakery with the day's breads and pastries, oven times and WhatsApp pickup orders.</span></p>
           <span class="tag work-meta"><span class="t-nl">Demo · opent in een nieuw tabblad</span><span class="t-en" lang="en">Demo · opens in a new tab</span></span>
