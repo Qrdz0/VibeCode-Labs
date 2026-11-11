@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Bakkerij Korst · Artisan Bakery in Asse</title>
+<meta name="description" content="Sourdough, spelt and pastries baked every morning in Asse. Order on WhatsApp and pick up at the counter. Demo by VibeCode Labs.">
+<meta name="theme-color" content="#FDFBF7">
+<link rel="preload" href="../fonts/playfair-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"Playfair Display";font-weight:400 900;font-display:swap;src:url(../fonts/playfair-latin.woff2) format("woff2")}
+
+/* cream and chocolate; toasted gold marks the order button and the oven times */
+:root{
+ --bg:#FDFBF7;--paper:#F5EEE2;
+ --text:#3E2723;--text-2:#6B544D;--muted:#7D6A63;
+ --line:rgba(62,39,35,.10);--line-strong:rgba(62,39,35,.22);
+ --gold:#C89B3C;--gold-ink:#7E5E1C;
+ --open:#4f7a52;
+ --ease:cubic-bezier(.2,0,0,1);
+ --serif:"Playfair Display",Georgia,serif;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:104px}
+body{background:var(--bg);color:var(--text);font:400 16px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased;padding-top:32px}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--text);outline-offset:3px}
+.wrap{max-width:1080px;margin:auto;padding:0 20px}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.05;letter-spacing:-.01em}
+h2{font-size:clamp(36px,7vw,56px)}
+.num{font-variant-numeric:tabular-nums lining-nums}
+.label{font-size:14px;color:var(--muted)}
+svg.i{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* Demo banner */
+.demo{position:fixed;top:0;left:0;right:0;z-index:30;height:32px;display:flex;align-items:center;justify-content:center;white-space:nowrap;background:var(--text);color:var(--bg);font-size:13px;font-weight:500}
+.demo a{text-decoration:underline;text-underline-offset:3px}
+
+/* Nav */
+nav{position:sticky;top:32px;z-index:10;background:var(--bg);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:24px;height:68px}
+.logo{font:400 24px var(--serif)}
+.status{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--text-2)}
+.status i{width:7px;height:7px;border-radius:50%;background:var(--muted)}
+.status.on i{background:var(--open)}
+.links{margin-left:auto;display:flex;gap:28px;font-size:15px}
+.links a{color:var(--text-2);transition:color .15s var(--ease)}
+.links a:hover{color:var(--text)}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:52px;padding:0 28px;border-radius:10px;font-size:15px;font-weight:500;transition:background-color .15s var(--ease),transform .1s var(--ease)}
+.btn:active{transform:scale(.98)}
+.btn-main{background:var(--gold);color:var(--text)}
+.btn-main:hover{background:#B88A2E}
+.textlink{color:var(--text-2);border-bottom:1px solid var(--line-strong);padding-bottom:2px;transition:color .15s var(--ease),border-color .15s var(--ease)}
+.textlink:hover{color:var(--text);border-color:var(--text)}
+
+/* Hero */
+.hero{padding:72px 0 96px}
+.hero .wrap{display:grid;gap:56px;align-items:center}
+.hero h1{font-size:clamp(48px,10vw,92px);margin:16px 0 24px}
+.hero .lead{max-width:38ch;color:var(--text-2);font-size:18px;margin-bottom:36px}
+.actions{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px}
+
+/* The moment: this morning's bake slip, on kraft-toned paper */
+.slip{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:28px 24px 24px;box-shadow:0 1px 2px rgba(62,39,35,.06),0 12px 32px -12px rgba(62,39,35,.18);transform:rotate(-1deg)}
+.slip-head{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:16px;border-bottom:1px dashed var(--line-strong)}
+.slip-head b{font:400 26px var(--serif)}
+.slip-head span{font-size:13px;color:var(--muted)}
+.slip ul{list-style:none;padding:0}
+.slip li{display:grid;grid-template-columns:56px 1fr auto;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
+.slip li:last-child{border-bottom:0}
+.slip time{color:var(--gold-ink)}
+.slip .soon{color:var(--muted)}
+.slip .soon time{color:var(--muted)}
+.slip-foot{margin-top:12px;padding-top:12px;border-top:1px dashed var(--line-strong);font-size:13px;color:var(--muted)}
+
+/* Menu */
+section{padding:96px 0;border-top:1px solid var(--line-strong)}
+.head{display:grid;gap:12px;margin-bottom:48px}
+.groups{display:grid;gap:56px}
+.group h3{font-size:28px;margin-bottom:16px}
+.menu{list-style:none;padding:0;border-top:1px solid var(--line-strong)}
+.menu li{display:grid;grid-template-columns:1fr auto;gap:4px 16px;padding:20px 0;border-bottom:1px solid var(--line)}
+.menu b{font:400 22px/1.3 var(--serif)}
+.menu .price{font-size:18px;text-align:right}
+.menu p{grid-column:1/-1;color:var(--text-2);font-size:15px;max-width:48ch}
+.menu small{display:block;margin-top:4px;font:400 13px/1.4 ui-sans-serif,system-ui,sans-serif;color:var(--gold-ink)}
+.price-note{margin-top:32px;font-size:14px;color:var(--muted)}
+
+/* Order band */
+.band{background:var(--paper)}
+.band .wrap{display:grid;gap:48px}
+.band h2{margin-bottom:20px}
+.band p{color:var(--text-2);max-width:38ch;margin-bottom:32px}
+.hours{display:grid;grid-template-columns:1fr auto;align-content:start;border-top:1px solid var(--line-strong)}
+.hours dt,.hours dd{padding:14px 0;border-bottom:1px solid var(--line);margin:0}
+.hours dd{text-align:right}
+.hours .closed{color:var(--muted)}
+
+/* Footer */
+footer{padding:88px 0 128px;border-top:1px solid var(--line-strong)}
+footer .wrap{display:grid;gap:40px}
+footer address{font:400 26px/1.3 var(--serif);font-style:normal;margin:16px 0 0}
+footer dl{display:grid;grid-template-columns:104px 1fr;gap:12px 24px;align-content:start}
+footer dt{color:var(--muted)}footer dd{margin:0}
+.credit{grid-column:1/-1;padding-top:24px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+.credit a{text-decoration:underline;text-underline-offset:3px}
+
+/* Mobile order bar: appears once the hero button has scrolled away */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:20;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--line-strong);transition:transform .25s var(--ease)}
+.bar .btn{width:100%}
+.bar.away{transform:translateY(110%)}
+
+/* Demo notice instead of opening WhatsApp */
+.toast{position:fixed;left:16px;right:16px;bottom:88px;z-index:40;max-width:440px;margin:auto;padding:14px 16px;background:var(--text);border-radius:10px;color:var(--bg);font-size:14px;line-height:1.5;opacity:0;transform:translateY(8px);pointer-events:none;transition:opacity .2s ease,transform .2s ease}
+.toast.show{opacity:1;transform:none}
+.toast q{display:block;margin-top:6px;opacity:.8}
+
+@media(max-width:559px){.links{display:none}}
+@media(min-width:768px){
+ .wrap{padding:0 40px}
+ .hero{padding:104px 0 128px}
+ .hero .wrap{grid-template-columns:1.2fr 1fr;gap:80px}
+ section{padding:128px 0}
+ .head{grid-template-columns:1fr 2fr;align-items:end}
+ .groups{grid-template-columns:1fr 1fr;gap:64px}
+ .band .wrap{grid-template-columns:1fr 1fr;gap:80px}
+ footer .wrap{grid-template-columns:1fr 1fr}
+ footer{padding-bottom:64px}
+ .bar{display:none}
+ .toast{bottom:24px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+<p class="demo">Demo site by&nbsp;<a href="../../">VibeCode Labs</a></p>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+ <symbol id="i-msg" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
+</svg>
+
+<nav aria-label="Main">
+ <div class="wrap">
+  <a class="logo" href="#top">Bakkerij Korst</a>
+  <div class="status" id="status"><i></i><span>Opening hours</span></div>
+  <div class="links"><a href="#menu">Breads</a><a href="#order">Hours</a><a href="#contact">Address</a></div>
+ </div>
+</nav>
+
+<main>
+<header class="hero" id="top"><div class="wrap">
+ <div>
+  <p class="label">Baked every morning · Asse</p>
+  <h1>Artisan Bakery in Asse</h1>
+  <p class="lead">Sourdough, spelt and butter pastries, shaped by hand the night before and baked from six in the morning. Order on WhatsApp and pick up at the counter.</p>
+  <div class="actions">
+   <a class="btn btn-main" id="hero-order" href="#demo-whatsapp" data-msg="Hello, I'd like to order for pickup:  Pickup day and time: "><svg class="i"><use href="#i-msg"/></svg>Order for Pickup</a>
+   <a class="textlink" href="#menu">See today's breads</a>
+  </div>
+ </div>
+
+ <figure class="slip num" aria-label="Example of a morning's bake list">
+  <div class="slip-head"><b>Out of the oven</b><span>Example morning</span></div>
+  <ul>
+   <li><time>06:10</time><span>Baguettes</span><span>24</span></li>
+   <li><time>06:40</time><span>Sourdough loaves</span><span>18</span></li>
+   <li><time>07:15</time><span>Croissants</span><span>60</span></li>
+   <li><time>08:00</time><span>Spelt loaves</span><span>12</span></li>
+   <li class="soon"><time>10:30</time><span>Rice tart</span><span>Next</span></li>
+  </ul>
+  <p class="slip-foot">Order before 18:00 and we set yours aside for tomorrow</p>
+ </figure>
+</div></header>
+
+<section id="menu" aria-labelledby="m"><div class="wrap">
+ <div class="head"><p class="label">The counter</p><h2 id="m">Daily Breads &amp; Pastries</h2></div>
+ <div class="groups">
+  <div class="group">
+   <h3>Breads</h3>
+   <ul class="menu num">
+    <li><b>Sourdough loaf<small>Out at 06:40</small></b><span class="price">€5.20</span><p>Wheat and a little rye, a two-day rise and a dark crust.</p></li>
+    <li><b>Spelt loaf<small>Out at 08:00</small></b><span class="price">€4.80</span><p>Wholegrain spelt with sunflower seeds, soft and nutty.</p></li>
+    <li><b>Country rye<small>Out at 07:30</small></b><span class="price">€4.60</span><p>Dense and slightly sour, made for cheese and butter.</p></li>
+    <li><b>Baguette<small>Out at 06:10</small></b><span class="price">€2.10</span><p>Thin crust, open crumb, best before noon.</p></li>
+   </ul>
+  </div>
+  <div class="group">
+   <h3>Pastries</h3>
+   <ul class="menu num">
+    <li><b>Butter croissant<small>Out at 07:15</small></b><span class="price">€1.60</span><p>Laminated with Belgian butter over three days.</p></li>
+    <li><b>Pain au chocolat<small>Out at 07:15</small></b><span class="price">€1.80</span><p>The same dough around two bars of dark chocolate.</p></li>
+    <li><b>Cinnamon bun<small>Out at 09:00</small></b><span class="price">€2.40</span><p>Brioche dough, cinnamon sugar and a thin glaze.</p></li>
+    <li><b>Rice tart, per slice<small>Out at 10:30</small></b><span class="price">€2.90</span><p>The Flemish classic, creamy rice in a soft crust.</p></li>
+   </ul>
+  </div>
+ </div>
+ <p class="price-note">Example prices for this demo. Pay with Bancontact or cash at pickup.</p>
+</div></section>
+
+<section class="band" id="order" aria-labelledby="o"><div class="wrap">
+ <div>
+  <p class="label">Order ahead</p>
+  <h2 id="o">Your bread, set aside</h2>
+  <p>Send us on WhatsApp what you'd like and when you'll come by. We confirm in the same chat and keep it at the counter with your name on it.</p>
+  <a class="btn btn-main" href="#demo-whatsapp" data-msg="Hello, I'd like to order for pickup:  Pickup day and time: "><svg class="i"><use href="#i-msg"/></svg>Order for Pickup</a>
+ </div>
+ <dl class="hours num" aria-label="Opening hours">
+  <dt>Tuesday to Friday</dt><dd>06:30–18:00</dd>
+  <dt>Saturday</dt><dd>06:30–17:00</dd>
+  <dt>Sunday</dt><dd>07:00–13:00</dd>
+  <dt class="closed">Monday</dt><dd class="closed">Closed</dd>
+ </dl>
+</div></section>
+</main>
+
+<footer id="contact"><div class="wrap">
+ <div>
+  <p class="label">Address</p>
+  <address>Asse centre</address>
+ </div>
+ <dl class="num">
+  <dt>WhatsApp</dt><dd>+32 4xx xx xx xx (demo)</dd>
+  <dt>Payment</dt><dd>Bancontact or cash</dd>
+ </dl>
+ <p class="credit">Demo site by <a href="../../">VibeCode Labs</a>. Name, number, prices and bake times are made up. <span id="demo-whatsapp">In this demo the buttons don't open WhatsApp.</span></p>
+</div></footer>
+
+<div class="bar" id="bar"><a class="btn btn-main" href="#demo-whatsapp" data-msg="Hello, I'd like to order for pickup:  Pickup day and time: "><svg class="i"><use href="#i-msg"/></svg>Order for Pickup</a></div>
+<p class="toast" id="toast" role="status" aria-live="polite"></p>
+
+<script>
+// Open/closed in Belgian time, not the visitor's clock. [open, close] in hours, index 0 = Sunday, null = closed
+const H=[[7,13],null,[6.5,18],[6.5,18],[6.5,18],[6.5,18],[6.5,17]];
+const p=Object.fromEntries(new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Brussels',weekday:'short',hour:'numeric',minute:'numeric',hourCycle:'h23'}).formatToParts(new Date()).map(x=>[x.type,x.value]));
+const r=H[['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(p.weekday)],t=+p.hour+p.minute/60,on=!!r&&t>=r[0]&&t<r[1];
+const s=document.getElementById('status');s.classList.toggle('on',on);
+s.lastElementChild.textContent=on?'Open until '+r[1]+':00':'Closed now';
+
+// Hide the mobile bar while the hero's own order button is on screen
+const bar=document.getElementById('bar'),cta=document.getElementById('hero-order');
+const sync=()=>bar.classList.toggle('away',cta.getBoundingClientRect().bottom>0);
+sync();addEventListener('scroll',sync,{passive:true});
+
+// Demo only: show the message WhatsApp would open with, instead of messaging a made-up number
+const toast=document.getElementById('toast');let tt;
+document.querySelectorAll('a[data-msg]').forEach(a=>a.addEventListener('click',e=>{
+  e.preventDefault();
+  toast.textContent='Demo: on the real site, WhatsApp opens with this message ready.';
+  const q=document.createElement('q');q.textContent=a.dataset.msg;toast.append(q);
+  toast.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>toast.classList.remove('show'),4000);
+}));
+</script>
+</body>
+</html>

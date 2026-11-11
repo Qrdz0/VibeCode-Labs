@@ -172,7 +172,7 @@ footer { border-top: 1px solid var(--line); padding: 64px 0 40px; }
   .head { grid-template-columns: 1fr 2fr; align-items: end; }
   .head .mono { align-self: start; padding-top: 12px; }
   .grid-3 { grid-template-columns: repeat(3, 1fr); }
-  .work { grid-template-columns: 1fr 1fr; }
+  .work { grid-template-columns: repeat(3, 1fr); }
   .about { grid-template-columns: 2fr 1fr; gap: 64px; }
   .steps { grid-template-columns: repeat(3, 1fr); gap: 32px; }
   .steps li { grid-template-columns: 1fr; padding-top: 24px; }
@@ -267,6 +267,11 @@ try { if (localStorage.getItem('lang') === 'en') document.documentElement.lang =
         <a class="card reveal" href="demos/Demo-Barbershop/" target="_blank" rel="noopener">
           <div class="work-top"><h3>Atelier Noir barbershop</h3><span class="arrow" aria-hidden="true">↗</span></div>
           <p><span class="t-nl">Fades, baardverzorging en hot towel shaves, met een prijslijst en boeken via WhatsApp.</span><span class="t-en" lang="en">Fades, beard trims and hot towel shaves, with a price list and WhatsApp booking.</span></p>
+          <span class="tag work-meta"><span class="t-nl">Demo · opent in een nieuw tabblad</span><span class="t-en" lang="en">Demo · opens in a new tab</span></span>
+        </a>
+        <a class="card reveal" href="demos/Demo-Bakery/" target="_blank" rel="noopener">
+          <div class="work-top"><h3>Bakkerij Korst</h3><span class="arrow" aria-hidden="true">↗</span></div>
+          <p><span class="t-nl">Ambachtelijke bakkerij met het brood en gebak van de dag, ovenuren en afhalen bestellen via WhatsApp.</span><span class="t-en" lang="en">Artisan bakery with the day's breads and pastries, oven times and WhatsApp pickup orders.</span></p>
           <span class="tag work-meta"><span class="t-nl">Demo · opent in een nieuw tabblad</span><span class="t-en" lang="en">Demo · opens in a new tab</span></span>
         </a>
       </div>
