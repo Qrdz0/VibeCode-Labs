@@ -1,12 +1,12 @@
 # VibeCode Labs
 
-Fast, mobile-first websites for local businesses in Asse, Belgium.
+Fast, mobile-first websites for local businesses in Flanders.
 
 ---
 
 ## About
 
-VibeCode Labs is a small web design studio based in Asse, Belgium. We build
+VibeCode Labs is a small web design studio based in Flanders. We build
 fast, mobile-friendly websites for local businesses — bakeries, cafés,
 barbershops, and anyone who needs a clean online presence without paying
 agency prices.
@@ -60,9 +60,9 @@ site that loads instantly on any device.
 
 ## Contact
 
-Email: unbanqrdz@gmail.com
+Email: hello@vibecodelabs.be
 
-Location: Asse, Belgium
+Location: Flanders
 
 ---
 
@@ -78,7 +78,7 @@ We believe in honesty about how modern software gets built. AI is a tool, not a
 replacement for craft, judgment, and accountability.
 
 If you have questions about our development process, reach out:
-unbanqrdz@gmail.com
+hello@vibecodelabs.be
 
 
 ## License
